@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ganesh Kumbhar — Full Stack Developer</title>
+  <meta name="description" content="Ganesh Kumbhar — Full Stack Web Developer skilled in HTML, CSS, Tailwind, Python and PHP." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' style='stop-color:%23b820e6'/><stop offset='100%25' style='stop-color:%23da7d20'/></linearGradient></defs><rect width='100' height='100' rx='22' fill='url(%23g)'/><text x='50' y='72' font-family='Georgia' font-size='62' font-weight='bold' fill='white' text-anchor='middle'>G</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+  :root {
+    --bg:#faf9f7; --bg2:#f3f1ee; --bg3:#ede9e4; --surface:#ffffff;
+    --border:rgba(0,0,0,0.08); --border2:rgba(0,0,0,0.15);
+    --text:#1a1714; --text2:#6b6560; --text3:#b0a99f;
+    --accent:#b820e6; --accent2:#da7d20;
+    --accent-soft:rgba(184,32,230,0.08); --accent-glow:rgba(184,32,230,0.18);
+    --grad:linear-gradient(135deg,#b820e6,#da7d20);
+    --grad-text:linear-gradient(135deg,#b820e6 30%,#da7d20);
+    --shadow-sm:0 2px 12px rgba(0,0,0,0.06); --shadow-md:0 8px 32px rgba(0,0,0,0.10);
+    --shadow-lg:0 20px 60px rgba(0,0,0,0.12); --shadow-card:4px 4px 0px rgba(0,0,0,0.85);
+    --radius:14px; --radius-lg:22px; --radius-xl:32px;
+    --ease:cubic-bezier(.4,0,.2,1); --t:0.28s;
+  }
+  [data-theme="dark"] {
+    --bg:#0e0c0a; --bg2:#141210; --bg3:#1c1916; --surface:#1e1b17;
+    --border:rgba(255,255,255,0.07); --border2:rgba(255,255,255,0.14);
+    --text:#f0ece6; --text2:#9a9089; --text3:#4a4540;
+    --accent:#d44aff; --accent2:#ff8c30;
+    --accent-soft:rgba(212,74,255,0.10); --accent-glow:rgba(212,74,255,0.22);
+    --grad:linear-gradient(135deg,#d44aff,#ff8c30);
+    --grad-text:linear-gradient(135deg,#d44aff 30%,#ff8c30);
+    --shadow-sm:0 2px 12px rgba(0,0,0,0.3); --shadow-md:0 8px 32px rgba(0,0,0,0.4);
+    --shadow-lg:0 20px 60px rgba(0,0,0,0.5); --shadow-card:4px 4px 0px rgba(212,74,255,0.4);
+  }
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:80px}
+  body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden;transition:background var(--t) var(--ease),color var(--t) var(--ease)}
+  a{color:inherit;text-decoration:none} img{display:block;max-width:100%} button{font-family:inherit;cursor:pointer}
+  ::-webkit-scrollbar{width:4px} ::-webkit-scrollbar-track{background:var(--bg)} ::-webkit-scrollbar-thumb{background:var(--accent);border-radius:2px}
+  ::selection{background:var(--accent-soft);color:var(--accent)}
+  .container{max-width:1160px;margin:0 auto;padding:0 28px}
+  .section{padding:110px 0}
+  .grad-text{background:var(--grad-text);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+  .section-tag{display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--accent);letter-spacing:0.18em;text-transform:uppercase;margin-bottom:16px}
+  .section-tag::before{content:'';display:inline-block;width:28px;height:1px;background:var(--accent)}
+  .section-heading{font-family:'Instrument Serif',serif;font-size:clamp(2.2rem,4vw,3.2rem);font-weight:400;line-height:1.1;letter-spacing:-0.02em;margin-bottom:16px}
+  .section-sub{color:var(--text2);font-size:1rem;max-width:520px;margin-bottom:56px}
+  /* BUTTONS */
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;border-radius:50px;font-size:0.92rem;font-weight:500;transition:all var(--t) var(--ease);border:none;cursor:pointer;font-family:'DM Sans',sans-serif}
+  .btn-grad{background:var(--grad);color:#fff;box-shadow:0 4px 20px var(--accent-glow)}
+  .btn-grad:hover{transform:translateY(-2px);box-shadow:0 8px 30px var(--accent-glow)}
+  .btn-outline{background:transparent;color:var(--text);border:1.5px solid var(--border2)}
+  .btn-outline:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+  /* NAV */
+  .nav{position:fixed;top:0;inset-inline:0;z-index:999;padding:20px 40px;display:flex;align-items:center;justify-content:space-between;transition:all var(--t) var(--ease)}
+  .nav.solid{background:var(--surface);border-bottom:1px solid var(--border);padding:14px 40px;box-shadow:var(--shadow-sm);backdrop-filter:blur(16px)}
+  .nav-logo{font-family:'Instrument Serif',serif;font-size:1.5rem;font-style:italic;color:var(--text)}
+  .nav-logo span{background:var(--grad-text);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .nav-links{list-style:none;display:flex;gap:36px;background:var(--surface);border:1px solid var(--border);border-radius:50px;padding:10px 28px;box-shadow:var(--shadow-sm)}
+  [data-theme="dark"] .nav-links{background:rgba(30,27,23,0.85)}
+  .nav-link{font-size:0.88rem;color:var(--text2);font-weight:500;transition:color var(--t) var(--ease);position:relative}
+  .nav-link::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1.5px;background:var(--grad);transform:scaleX(0);transition:transform var(--t) var(--ease);border-radius:1px}
+  .nav-link:hover,.nav-link.active{color:var(--text)} .nav-link:hover::after,.nav-link.active::after{transform:scaleX(1)}
+  .nav-right{display:flex;align-items:center;gap:12px}
+  .theme-btn{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--border2);background:var(--surface);display:flex;align-items:center;justify-content:center;font-size:1rem;transition:all var(--t) var(--ease)}
+  .theme-btn:hover{border-color:var(--accent);transform:rotate(20deg)}
+  .nav-contact{display:flex;align-items:center;gap:6px;padding:10px 22px;border:1.5px solid var(--border2);border-radius:50px;font-size:0.85rem;color:var(--text);font-weight:500;transition:all var(--t) var(--ease)}
+  .nav-contact:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+  .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:4px}
+  .hamburger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:all var(--t) var(--ease)}
+  .side-menu{position:fixed;top:0;right:-280px;bottom:0;width:280px;z-index:1100;background:var(--surface);border-left:1px solid var(--border);padding:80px 36px 40px;transition:right 0.38s var(--ease)}
+  .side-menu.open{right:0} .side-menu ul{list-style:none;display:flex;flex-direction:column;gap:28px}
+  .side-menu a{font-family:'Instrument Serif',serif;font-size:1.6rem;color:var(--text);font-style:italic;transition:color var(--t) var(--ease);display:block}
+  .side-menu a:hover{color:var(--accent)}
+  .side-close{position:absolute;top:22px;right:22px;background:none;border:none;font-size:1.4rem;color:var(--text2);cursor:pointer;transition:color var(--t) var(--ease)} .side-close:hover{color:var(--text)}
+  .overlay{position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:1050;opacity:0;pointer-events:none;transition:opacity 0.3s} .overlay.show{opacity:1;pointer-events:all}
+  /* HERO */
+  .hero{min-height:100vh;display:flex;align-items:center;padding-top:90px;position:relative;overflow:hidden}
+  .hero::before{content:'';position:absolute;top:-180px;right:-180px;width:600px;height:600px;background:radial-gradient(circle,var(--accent-glow),transparent 70%);border-radius:50%;pointer-events:none;animation:blobFloat 10s ease-in-out infinite}
+  .hero::after{content:'';position:absolute;bottom:-120px;left:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(218,125,32,0.12),transparent 70%);border-radius:50%;pointer-events:none;animation:blobFloat 14s ease-in-out infinite reverse}
+  @keyframes blobFloat{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(20px,-30px) scale(1.06)}}
+  .hero-inner{display:flex;align-items:center;justify-content:space-between;gap:60px;position:relative;z-index:1;width:100%}
+  .hero-text{max-width:580px}
+  .hero-available{display:inline-flex;align-items:center;gap:8px;padding:7px 18px;border-radius:50px;border:1.5px solid rgba(34,197,94,0.35);background:rgba(34,197,94,0.07);font-size:0.78rem;font-family:'JetBrains Mono',monospace;color:#16a34a;margin-bottom:28px;letter-spacing:0.05em}
+  [data-theme="dark"] .hero-available{color:#4ade80;border-color:rgba(74,222,128,0.3);background:rgba(74,222,128,0.06)}
+  .avail-dot{width:6px;height:6px;background:#22c55e;border-radius:50%;animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+  .hero-name{font-family:'Instrument Serif',serif;font-size:clamp(3.2rem,7vw,5.8rem);font-weight:400;line-height:1.0;letter-spacing:-0.03em;margin-bottom:20px}
+  .hero-name .line2{display:block;font-style:italic}
+  .hero-role{font-family:'JetBrains Mono',monospace;font-size:0.9rem;color:var(--text2);letter-spacing:0.1em;margin-bottom:22px;min-height:1.5em}
+  .cursor-blink{display:inline-block;width:2px;height:0.9em;background:var(--accent);margin-left:2px;vertical-align:middle;animation:blink 1.1s step-end infinite}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+  .hero-desc{color:var(--text2);font-size:1rem;max-width:460px;margin-bottom:36px}
+  .hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:48px}
+  .hero-socials{display:flex;gap:12px}
+  .soc-link{width:42px;height:42px;border:1.5px solid var(--border2);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--text2);transition:all var(--t) var(--ease)}
+  .soc-link svg{width:17px;height:17px}
+  .soc-link:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-3px);background:var(--accent-soft)}
+  .hero-img-wrap{position:relative;flex-shrink:0}
+  .hero-img-ring{position:relative;width:340px;height:340px}
+  .hero-img-ring::before{content:'';position:absolute;inset:-3px;background:var(--grad);border-radius:50%;animation:spin 8s linear infinite;opacity:0.7}
+  .hero-img-ring::after{content:'';position:absolute;inset:0;background:var(--bg);border-radius:50%}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .hero-img{position:absolute;inset:6px;z-index:1;border-radius:50%;object-fit:cover;width:calc(100% - 12px);height:calc(100% - 12px)}
+  .hero-img-placeholder{position:absolute;inset:6px;z-index:1;border-radius:50%;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-family:'Instrument Serif',serif;font-size:5rem;color:var(--text3);font-style:italic}
+  .orbit-badge{position:absolute;bottom:10px;right:-20px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 18px;display:flex;align-items:center;gap:10px;box-shadow:var(--shadow-md);z-index:2}
+  .orbit-badge-icon{font-size:1.4rem} .orbit-badge-label{font-size:0.72rem;color:var(--text2)} .orbit-badge-val{font-weight:700;font-size:1rem;color:var(--text);display:block;line-height:1.2}
+  .hero-scroll{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:0.64rem;letter-spacing:0.2em;color:var(--text3);text-transform:uppercase}
+  .hero-scroll-line{width:1px;height:48px;background:linear-gradient(to bottom,var(--accent),transparent);animation:scrollLine 2s ease-in-out infinite}
+  @keyframes scrollLine{0%,100%{transform:scaleY(1);opacity:1}50%{transform:scaleY(.4);opacity:.3}}
+  /* ABOUT */
+  .about{background:var(--bg2)}
+  .about-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:80px;align-items:start}
+  .about-photo-frame{position:relative;width:300px}
+  .about-photo-frame::before{content:'';position:absolute;inset:-2px;background:var(--grad);border-radius:calc(var(--radius-lg) + 2px);opacity:0.5}
+  .about-photo{width:100%;border-radius:var(--radius-lg);position:relative;z-index:1;object-fit:cover;display:block}
+  .about-photo-placeholder{width:100%;aspect-ratio:3/4;background:var(--bg3);border-radius:var(--radius-lg);position:relative;z-index:1;display:flex;align-items:center;justify-content:center;font-family:'Instrument Serif',serif;font-size:4rem;color:var(--text3);font-style:italic}
+  .spin-ring{position:absolute;right:-28px;bottom:24px;width:110px;height:110px;background:var(--surface);border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-md);z-index:2}
+  .spin-ring svg{position:absolute;animation:spin 12s linear infinite} .spin-ring-icon{font-size:1.5rem;z-index:1}
+  .about-stats-row{display:flex;gap:14px;margin-top:22px}
+  .astat{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 10px;text-align:center;transition:all var(--t) var(--ease)}
+  .astat:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:var(--shadow-md)}
+  .astat-n{font-family:'Instrument Serif',serif;font-size:1.9rem;background:var(--grad-text);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block;line-height:1.1}
+  .astat-l{font-size:0.68rem;color:var(--text2);font-family:'JetBrains Mono',monospace;letter-spacing:0.05em}
+  .about-p{color:var(--text2);margin-bottom:16px}
+  .skill-chips{display:flex;flex-wrap:wrap;gap:8px;margin:28px 0}
+  .chip{padding:6px 16px;border:1.5px solid var(--border);border-radius:50px;font-size:0.8rem;color:var(--text2);background:var(--surface);transition:all var(--t) var(--ease);font-weight:500}
+  .chip:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+  .tools-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
+  .tool-pill{display:flex;align-items:center;gap:8px;padding:8px 16px;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface);font-size:0.82rem;color:var(--text2);transition:all var(--t) var(--ease)}
+  .tool-pill:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:var(--shadow-sm)}
+  .tool-pill-dot{width:8px;height:8px;border-radius:50%;background:var(--grad);flex-shrink:0}
+  /* SERVICES */
+  .services{background:var(--bg)}
+  .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px}
+  .svc-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:36px 28px;transition:all var(--t) var(--ease);position:relative;overflow:hidden}
+  .svc-card::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--accent-soft),transparent);opacity:0;transition:opacity var(--t) var(--ease)}
+  .svc-card:hover{border-color:var(--accent);transform:translateY(-6px);box-shadow:var(--shadow-card)} .svc-card:hover::after{opacity:1}
+  .svc-icon{width:52px;height:52px;border-radius:14px;background:var(--accent-soft);border:1px solid rgba(184,32,230,0.2);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:20px;position:relative;z-index:1}
+  .svc-title{font-family:'Instrument Serif',serif;font-size:1.25rem;margin-bottom:12px;position:relative;z-index:1}
+  .svc-desc{color:var(--text2);font-size:0.87rem;line-height:1.65;margin-bottom:24px;position:relative;z-index:1}
+  .svc-link{display:flex;align-items:center;gap:6px;font-size:0.85rem;color:var(--accent);font-weight:600;position:relative;z-index:1;transition:gap var(--t) var(--ease)}
+  .svc-card:hover .svc-link{gap:10px}
+  /* WORK */
+  .work{background:var(--bg2)}
+  .work-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+  .work-card{border-radius:var(--radius-lg);overflow:hidden;background:var(--surface);border:1.5px solid var(--border);transition:all var(--t) var(--ease)}
+  .work-card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+  .work-card-top{background:var(--bg3);height:200px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:0}
+  .work-card-desc{font-size:0.82rem;color:var(--text2);line-height:1.55;margin:6px 0 8px;max-width:260px}
+  .work-card-num{font-family:'Instrument Serif',serif;font-size:7rem;font-style:italic;color:var(--border);line-height:1;transition:color var(--t) var(--ease)}
+  .work-card:hover .work-card-num{color:var(--accent-glow)}
+  .work-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.35),transparent);opacity:0;transition:opacity var(--t) var(--ease);display:flex;align-items:flex-end;justify-content:flex-end;padding:16px}
+  .work-card:hover .work-card-overlay{opacity:1}
+  .work-card-arrow{width:38px;height:38px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;color:#000;font-weight:700;transform:translate(4px,4px);transition:transform var(--t) var(--ease)}
+  .work-card:hover .work-card-arrow{transform:translate(0,0)}
+  .work-card-body{padding:22px 24px 24px;display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
+  .work-card-cat{font-family:'JetBrains Mono',monospace;font-size:0.68rem;color:var(--accent);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:4px}
+  .work-card-title{font-family:'Instrument Serif',serif;font-size:1.2rem;font-weight:400}
+  .work-card-tech{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+  .work-card-tech span{padding:3px 10px;border-radius:50px;font-size:0.7rem;background:var(--bg3);color:var(--text2);border:1px solid var(--border)}
+  .work-card-gh{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border:1.5px solid var(--border2);border-radius:10px;color:var(--text2);flex-shrink:0;transition:all var(--t) var(--ease)}
+  .work-card-gh svg{width:16px;height:16px} .work-card-gh:hover{border-color:var(--accent);color:var(--accent);transform:scale(1.1)}
+  .work-more{text-align:center;margin-top:48px}
+  /* CERTS PREVIEW */
+  .certs{background:var(--bg)}
+  .cert-preview-stats{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius-xl);padding:36px 48px;margin-bottom:40px}
+  .cps-item{text-align:center;padding:0 36px}
+  .cps-num{display:block;font-family:'Instrument Serif',serif;font-size:2.6rem;line-height:1;background:var(--grad-text);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .cps-label{font-size:0.78rem;color:var(--text2);font-family:'JetBrains Mono',monospace;letter-spacing:0.06em;margin-top:6px;display:block}
+  .cps-divider{width:1px;height:48px;background:var(--border);flex-shrink:0}
+  .cert-preview-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+  .cert-preview-card{display:flex;align-items:center;gap:16px;padding:22px 24px;background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius-lg);transition:all var(--t) var(--ease)}
+  .cert-preview-card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:var(--shadow-md)}
+  .cpc-icon{font-size:2rem;flex-shrink:0} .cpc-body{flex:1;min-width:0}
+  .cpc-cat{font-weight:600;font-size:0.95rem;color:var(--text);margin-bottom:3px}
+  .cpc-examples{font-size:0.78rem;color:var(--text2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .cpc-arrow{color:var(--accent);font-size:1.1rem;flex-shrink:0;transition:transform var(--t) var(--ease)}
+  .cert-preview-card:hover .cpc-arrow{transform:translateX(4px)}
+  /* BLOG */
+  .blog{background:var(--bg2)}
+  .blog-coming{max-width:520px;margin:0 auto;text-align:center;background:var(--surface);border:1.5px dashed var(--border);border-radius:var(--radius-xl);padding:72px 40px}
+  .blog-coming-icon{font-size:3.5rem;margin-bottom:24px}
+  .blog-coming h3{font-family:'Instrument Serif',serif;font-size:1.8rem;font-weight:400;margin-bottom:12px}
+  .blog-coming p{color:var(--text2);margin-bottom:32px}
+  .blog-topics{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:36px}
+  .blog-topic{padding:6px 18px;border-radius:50px;border:1px solid var(--border);background:var(--bg);font-size:0.8rem;color:var(--text2)}
+  /* CONTACT */
+  .contact{background:var(--bg)}
+  .contact-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:80px}
+  .contact-left h3{font-family:'Instrument Serif',serif;font-size:2rem;font-weight:400;line-height:1.2;margin-bottom:18px}
+  .contact-left p{color:var(--text2);margin-bottom:40px}
+  .contact-items{display:flex;flex-direction:column;gap:14px}
+  .contact-item{display:flex;align-items:center;gap:16px;padding:18px 20px;background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);transition:all var(--t) var(--ease)}
+  .contact-item:hover{border-color:var(--accent);transform:translateX(4px);box-shadow:var(--shadow-sm)}
+  .ci-icon{width:40px;height:40px;background:var(--accent-soft);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;color:var(--accent)}
+  .ci-icon svg{width:17px;height:17px} .ci-label{font-size:0.7rem;color:var(--text2);font-family:'JetBrains Mono',monospace;letter-spacing:0.06em}
+  .ci-val{font-size:0.88rem;color:var(--text);font-weight:500}
+  .contact-form{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius-xl);padding:40px}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .form-group{display:flex;flex-direction:column;gap:7px;margin-bottom:18px}
+  .form-group label{font-size:0.78rem;font-family:'JetBrains Mono',monospace;color:var(--text2);letter-spacing:0.07em}
+  .form-group input,.form-group textarea{background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:13px 16px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:0.93rem;outline:none;transition:border-color var(--t),box-shadow var(--t);resize:vertical}
+  .form-group input:focus,.form-group textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+  .form-group input::placeholder,.form-group textarea::placeholder{color:var(--text3)}
+  .form-submit{width:100%;justify-content:center;font-size:1rem;padding:15px;margin-top:4px}
+  .form-status{margin-top:14px;padding:11px 16px;border-radius:8px;font-size:0.85rem;text-align:center;display:none}
+  .form-status.show{display:block}
+  .form-status.ok{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.3);color:#16a34a}
+  .form-status.err{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.3);color:#dc2626}
+  [data-theme="dark"] .form-status.ok{color:#4ade80} [data-theme="dark"] .form-status.err{color:#f87171}
+  /* FOOTER */
+  .footer{background:var(--bg2);border-top:1px solid var(--border);padding:56px 0 28px}
+  .footer-top{display:flex;align-items:flex-start;justify-content:space-between;gap:40px;flex-wrap:wrap;padding-bottom:40px;margin-bottom:28px;border-bottom:1px solid var(--border)}
+  .footer-logo{font-family:'Instrument Serif',serif;font-size:1.8rem;font-style:italic;color:var(--text);display:block;margin-bottom:8px}
+  .footer-logo span{background:var(--grad-text);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .footer-desc{font-size:0.87rem;color:var(--text2)}
+  .footer-nav{display:flex;flex-direction:column;gap:10px}
+  .footer-nav a{font-size:0.88rem;color:var(--text2);transition:color var(--t) var(--ease)} .footer-nav a:hover{color:var(--accent)}
+  .footer-socials{display:flex;flex-direction:column;gap:12px;align-items:flex-end}
+  .footer-socials-row{display:flex;gap:10px}
+  .fsoc{width:38px;height:38px;border:1.5px solid var(--border2);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--text2);transition:all var(--t) var(--ease)}
+  .fsoc svg{width:16px;height:16px} .fsoc:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+  .footer-email{font-size:0.82rem;color:var(--text2)}
+  .footer-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  .footer-copy{font-size:0.82rem;color:var(--text2)}
+  .back-top{font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--accent);letter-spacing:0.1em;transition:letter-spacing var(--t)} .back-top:hover{letter-spacing:0.18em}
+  /* RESPONSIVE */
+  @media(max-width:1024px){
+    .hero-img-wrap{display:none}
+    .about-grid{grid-template-columns:1fr;gap:40px}
+    .about-photo-frame{width:240px;margin:0 auto}
+    .contact-grid{grid-template-columns:1fr;gap:40px}
+  }
+  @media(max-width:768px){
+    .nav{padding:14px 20px} .nav.solid{padding:12px 20px}
+    .nav-links,.nav-contact{display:none} .hamburger{display:flex}
+    .work-grid{grid-template-columns:1fr} .form-row{grid-template-columns:1fr}
+    .contact-form{padding:24px} .section{padding:72px 0}
+    .hero-btns{flex-direction:column;align-items:flex-start}
+    .cert-preview-stats{padding:28px 20px} .cps-item{padding:0 20px}
+  }
+  @media(max-width:480px){
+    .hero-name{font-size:2.8rem} .about-stats-row{flex-direction:column}
+    .footer-socials{align-items:flex-start} .footer-top{flex-direction:column}
+  }
+  </style>
+</head>
+<body>
+
+<div class="overlay" id="overlay"></div>
+<nav class="side-menu" id="sideMenu">
+  <button class="side-close" id="sideClose">✕</button>
+  <ul>
+    <li><a href="#hero" class="sm-link">Home</a></li>
+    <li><a href="#about" class="sm-link">About me</a></li>
+    <li><a href="#services" class="sm-link">Services</a></li>
+    <li><a href="#work" class="sm-link">My Work</a></li>
+    <li><a href="#certificates" class="sm-link">Certificates</a></li>
+    <li><a href="#blog" class="sm-link">Blog</a></li>
+    <li><a href="#contact" class="sm-link">Contact</a></li>
+  </ul>
+</nav>
+
+<header class="nav" id="navbar">
+  <a href="#hero" class="nav-logo"><span>G</span>anesh<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#hero" class="nav-link">Home</a></li>
+    <li><a href="#about" class="nav-link">About</a></li>
+    <li><a href="#services" class="nav-link">Services</a></li>
+    <li><a href="#work" class="nav-link">Work</a></li>
+    <li><a href="#certificates" class="nav-link">Certs</a></li>
+    <li><a href="#blog" class="nav-link">Blog</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-btn" id="themeBtn">🌙</button>
+    <a href="#contact" class="nav-contact">Contact ↗</a>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="hero" class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-available"><span class="avail-dot"></span> Open to opportunities</div>
+        <h1 class="hero-name">Hi, I'm<br/><span class="line2"><span class="grad-text">Ganesh</span> Kumbhar</span></h1>
+        <p class="hero-role"><span id="typedRole"></span><span class="cursor-blink"></span></p>
+        <p class="hero-desc">Driven full stack developer skilled in HTML, CSS, Tailwind, Python and PHP — passionate about bringing designs to life on the web.</p>
+        <div class="hero-btns">
+          <a href="#contact" class="btn btn-grad">Contact me →</a>
+          <a href="assets/resume/Ganesh_Kumbhar_Resume.pdf" download class="btn btn-outline">My Resume ↓</a>
+        </div>
+        <div class="hero-socials">
+          <a href="https://github.com/GaneshSKumbhar" target="_blank" class="soc-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/ganeshkumbhar27/" target="_blank" class="soc-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="mailto:ganeshkumbhar638@gmail.com" class="soc-link">✉️</a>
+        </div>
+      </div>
+      <div class="hero-img-wrap">
+        <div class="hero-img-ring">
+          <img src="images/profile-img2.jpg" alt="Ganesh Kumbhar" class="hero-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="hero-img-placeholder" style="display:none">G</div>
+        </div>
+        <div class="orbit-badge">
+          <div class="orbit-badge-icon">💻</div>
+          <div><span class="orbit-badge-label">Currently building</span><span class="orbit-badge-val">Web Apps</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll"><span>Scroll</span><div class="hero-scroll-line"></div></div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="reveal">
+        <div class="about-photo-frame">
+          <img src="images/profile-img.jpg" alt="Ganesh Kumbhar" class="about-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="about-photo-placeholder" style="display:none">G</div>
+          <div class="spin-ring">
+            <svg width="110" height="110" viewBox="0 0 110 110">
+              <defs><path id="cp" d="M 55,55 m -42,0 a 42,42 0 1,1 84,0 a 42,42 0 1,1 -84,0"/></defs>
+              <text fill="none" style="fill:var(--accent)"><textPath href="#cp" font-family="'JetBrains Mono'" font-size="9.5" letter-spacing="4">FULL STACK DEVELOPER • WEB DEVELOPER •</textPath></text>
+            </svg>
+            <span class="spin-ring-icon">👨‍💻</span>
+          </div>
+        </div>
+        <div class="about-stats-row">
+          <div class="astat"><span class="astat-n">4+</span><span class="astat-l">Projects</span></div>
+          <div class="astat"><span class="astat-n">10+</span><span class="astat-l">Certs</span></div>
+          <div class="astat"><span class="astat-n">2+</span><span class="astat-l">Years</span></div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="section-tag">Introduction</div>
+        <h2 class="section-heading">About <span class="grad-text">me</span></h2>
+        <p class="about-p">I am a future-ready <strong>Full Stack Web Developer</strong>, combining my academic journey in computer engineering with practical experience in web technologies like HTML, CSS, Tailwind, Python and PHP.</p>
+        <p class="about-p">I'm committed to crafting digital experiences that are both modern and user-focused — where clean code meets thoughtful design.</p>
+        <div class="skill-chips">
+          <span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">JavaScript</span>
+          <span class="chip">Tailwind CSS</span><span class="chip">Python</span><span class="chip">PHP</span>
+          <span class="chip">MongoDB</span><span class="chip">Firebase</span><span class="chip">Git</span>
+        </div>
+        <p style="font-size:.82rem;color:var(--text2);font-family:'JetBrains Mono',monospace;letter-spacing:.06em;margin-bottom:14px">TOOLS I USE</p>
+        <div class="tools-row">
+          <div class="tool-pill"><span class="tool-pill-dot"></span>VS Code</div>
+          <div class="tool-pill"><span class="tool-pill-dot"></span>Firebase</div>
+          <div class="tool-pill"><span class="tool-pill-dot"></span>MongoDB</div>
+          <div class="tool-pill"><span class="tool-pill-dot"></span>Figma</div>
+          <div class="tool-pill"><span class="tool-pill-dot"></span>Git / GitHub</div>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:32px">
+          <a href="https://github.com/GaneshSKumbhar" target="_blank" class="btn btn-grad">GitHub Profile →</a>
+          <a href="https://www.linkedin.com/in/ganeshkumbhar27/" target="_blank" class="btn btn-outline">LinkedIn →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="section services">
+  <div class="container">
+    <div class="section-tag">What I Offer</div>
+    <h2 class="section-heading">My <span class="grad-text">Services</span></h2>
+    <p class="section-sub">Comprehensive web solutions from design to deployment, tailored to your needs.</p>
+    <div class="services-grid">
+      <div class="svc-card reveal"><div class="svc-icon">🌐</div><h3 class="svc-title">Web Development</h3><p class="svc-desc">Creating modern, responsive websites using HTML, CSS, JavaScript, and Tailwind CSS with clean, maintainable code.</p><a href="#contact" class="svc-link">Get Started →</a></div>
+      <div class="svc-card reveal"><div class="svc-icon">⚙️</div><h3 class="svc-title">Backend Development</h3><p class="svc-desc">Building robust server-side applications with PHP and Python, including database design and API development.</p><a href="#contact" class="svc-link">Get Started →</a></div>
+      <div class="svc-card reveal"><div class="svc-icon">🎨</div><h3 class="svc-title">UI/UX Design</h3><p class="svc-desc">Designing intuitive and engaging user interfaces using Figma, focusing on user experience and modern design principles.</p><a href="#contact" class="svc-link">Get Started →</a></div>
+      <div class="svc-card reveal"><div class="svc-icon">🚀</div><h3 class="svc-title">Full Stack Solutions</h3><p class="svc-desc">End-to-end web application development, combining frontend and backend technologies for complete, scalable solutions.</p><a href="#contact" class="svc-link">Get Started →</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work" class="section work">
+  <div class="container">
+    <div class="section-tag">My Portfolio</div>
+    <h2 class="section-heading">My Latest <span class="grad-text">Work</span></h2>
+    <p class="section-sub">Real projects linked directly to GitHub — explore the code behind each one.</p>
+    <div class="work-grid">
+
+      <!-- 01 CET College Predictor -->
+      <div class="work-card reveal">
+        <div class="work-card-top">
+          <svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;position:absolute;inset:0">
+            <defs>
+              <linearGradient id="g1a" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#f3f1ee"/><stop offset="100%" style="stop-color:#ede9e4"/></linearGradient>
+              <linearGradient id="g1b" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#b820e6"/><stop offset="100%" style="stop-color:#da7d20"/></linearGradient>
+              [data-theme="dark"] { stop-color: #1c1916; }
+            </defs>
+            <!-- bg -->
+            <rect width="480" height="200" fill="var(--bg3)"/>
+            <!-- phone outline -->
+            <rect x="185" y="20" width="110" height="165" rx="14" fill="var(--surface)" stroke="var(--border2)" stroke-width="2"/>
+            <rect x="195" y="34" width="90" height="138" rx="6" fill="var(--bg2)"/>
+            <!-- notch -->
+            <rect x="218" y="22" width="44" height="8" rx="4" fill="var(--border2)"/>
+            <!-- screen content bars -->
+            <rect x="203" y="44" width="74" height="7" rx="3" fill="url(#g1b)" opacity=".8"/>
+            <rect x="203" y="57" width="55" height="5" rx="2.5" fill="var(--text3)"/>
+            <!-- score pill -->
+            <rect x="207" y="70" width="66" height="22" rx="11" fill="url(#g1b)" opacity=".15"/>
+            <text x="240" y="85" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="var(--accent)">87.4%</text>
+            <!-- bar chart rows -->
+            <rect x="203" y="100" width="58" height="5" rx="2" fill="var(--accent)" opacity=".6"/>
+            <rect x="203" y="110" width="40" height="5" rx="2" fill="var(--accent2)" opacity=".6"/>
+            <rect x="203" y="120" width="50" height="5" rx="2" fill="var(--accent)" opacity=".4"/>
+            <rect x="203" y="130" width="30" height="5" rx="2" fill="var(--accent2)" opacity=".4"/>
+            <!-- college list items -->
+            <rect x="203" y="143" width="74" height="4" rx="2" fill="var(--text3)"/>
+            <rect x="203" y="152" width="60" height="4" rx="2" fill="var(--text3)"/>
+            <rect x="203" y="161" width="68" height="4" rx="2" fill="var(--text3)"/>
+            <!-- Flutter logo hint -->
+            <polygon points="58,60 88,30 118,60 88,90" fill="url(#g1b)" opacity=".18"/>
+            <polygon points="88,60 118,30 148,60 118,90" fill="url(#g1b)" opacity=".10"/>
+            <!-- label -->
+            <text x="44" y="130" font-family="'JetBrains Mono',monospace" font-size="9" fill="var(--text3)" letter-spacing="2">FLUTTER</text>
+            <text x="44" y="143" font-family="'JetBrains Mono',monospace" font-size="9" fill="var(--text3)" letter-spacing="2">PREDICTOR</text>
+            <!-- right decorative circles -->
+            <circle cx="370" cy="80" r="28" fill="url(#g1b)" opacity=".08"/>
+            <circle cx="370" cy="80" r="18" fill="url(#g1b)" opacity=".10"/>
+            <circle cx="370" cy="80" r="8" fill="url(#g1b)" opacity=".25"/>
+            <text x="370" y="85" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="var(--accent)">01</text>
+            <text x="338" y="120" font-family="'JetBrains Mono',monospace" font-size="8" fill="var(--text3)" letter-spacing="1">12th %ile</text>
+            <text x="338" y="132" font-family="'JetBrains Mono',monospace" font-size="8" fill="var(--text3)" letter-spacing="1">→ College</text>
+          </svg>
+          <div class="work-card-overlay"><div class="work-card-arrow">→</div></div>
+        </div>
+        <div class="work-card-body">
+          <div class="work-card-info">
+            <div class="work-card-cat">Mobile App · Flutter</div>
+            <div class="work-card-title">CET College Predictor</div>
+            <div class="work-card-desc">Predicts college admissions based on 12th percentile scores using Flutter, helping students find their best-fit colleges.</div>
+            <div class="work-card-tech"><span>Flutter</span><span>Dart</span><span>Firebase</span></div>
+          </div>
+          <a href="https://github.com/GaneshSKumbhar/CET-college-predictor" target="_blank" class="work-card-gh"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg></a>
+        </div>
+      </div>
+
+      <!-- 02 Leave Management System -->
+      <div class="work-card reveal">
+        <div class="work-card-top">
+          <svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;position:absolute;inset:0">
+            <defs>
+              <linearGradient id="g2b" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#b820e6"/><stop offset="100%" style="stop-color:#da7d20"/></linearGradient>
+            </defs>
+            <rect width="480" height="200" fill="var(--bg3)"/>
+            <!-- browser window -->
+            <rect x="60" y="25" width="360" height="155" rx="10" fill="var(--surface)" stroke="var(--border2)" stroke-width="1.5"/>
+            <!-- browser bar -->
+            <rect x="60" y="25" width="360" height="28" rx="10" fill="var(--bg2)"/>
+            <rect x="60" y="40" width="360" height="13" fill="var(--bg2)"/>
+            <circle cx="80" cy="39" r="5" fill="#ff6b6b" opacity=".7"/>
+            <circle cx="96" cy="39" r="5" fill="#ffd93d" opacity=".7"/>
+            <circle cx="112" cy="39" r="5" fill="#6bcb77" opacity=".7"/>
+            <rect x="130" y="33" width="200" height="12" rx="6" fill="var(--bg3)"/>
+            <!-- sidebar -->
+            <rect x="60" y="53" width="72" height="127" fill="var(--bg2)"/>
+            <rect x="68" y="64" width="54" height="7" rx="3" fill="url(#g2b)" opacity=".7"/>
+            <rect x="68" y="78" width="44" height="5" rx="2.5" fill="var(--text3)"/>
+            <rect x="68" y="90" width="48" height="5" rx="2.5" fill="var(--text3)"/>
+            <rect x="68" y="102" width="38" height="5" rx="2.5" fill="var(--text3)"/>
+            <rect x="68" y="114" width="46" height="5" rx="2.5" fill="var(--text3)"/>
+            <rect x="68" y="126" width="40" height="5" rx="2.5" fill="var(--text3)"/>
+            <!-- calendar grid -->
+            <rect x="145" y="60" width="264" height="110" rx="6" fill="var(--bg)"/>
+            <!-- calendar header -->
+            <rect x="153" y="67" width="80" height="7" rx="3" fill="url(#g2b)" opacity=".6"/>
+            <!-- day cells -->
+            <rect x="153" y="82" width="24" height="18" rx="3" fill="var(--bg2)"/>
+            <rect x="183" y="82" width="24" height="18" rx="3" fill="var(--bg2)"/>
+            <rect x="213" y="82" width="24" height="18" rx="3" fill="url(#g2b)" opacity=".25"/>
+            <rect x="243" y="82" width="24" height="18" rx="3" fill="var(--bg2)"/>
+            <rect x="273" y="82" width="24" height="18" rx="3" fill="url(#g2b)" opacity=".6"/>
+            <rect x="303" y="82" width="24" height="18" rx="3" fill="url(#g2b)" opacity=".4"/>
+            <rect x="333" y="82" width="24" height="18" rx="3" fill="var(--bg2)"/>
+            <rect x="153" y="106" width="24" height="18" rx="3" fill="var(--bg2)"/>
+            <rect x="183" y="106" width="24" height="18" rx="3" fill="url(#g2b)" opacity=".2"/>
+            <rect x="213" y="106" width="24" height="18" rx="3" fill="var(--bg2)"/>
+            <rect x="243" y="106" width="24" height="18" rx="3" fill="var(--bg2)"/>
+            <rect x="273" y="106" width="24" height="18" rx="3" fill="var(--bg2)"/>
+            <rect x="303" y="106" width="24" height="18" rx="3" fill="url(#g2b)" opacity=".15"/>
+            <rect x="333" y="106" width="24" height="18" rx="3" fill="var(--bg2)"/>
+            <!-- status badges row -->
+            <rect x="153" y="132" width="40" height="12" rx="6" fill="#22c55e" opacity=".2"/>
+            <text x="173" y="141" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="7" fill="#22c55e">Approved</text>
+            <rect x="200" y="132" width="36" height="12" rx="6" fill="#f59e0b" opacity=".2"/>
+            <text x="218" y="141" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="7" fill="#f59e0b">Pending</text>
+            <rect x="243" y="132" width="34" height="12" rx="6" fill="#ef4444" opacity=".2"/>
+            <text x="260" y="141" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="7" fill="#ef4444">Rejected</text>
+            <!-- PHP label -->
+            <text x="153" y="158" font-family="'JetBrains Mono',monospace" font-size="8" fill="var(--text3)" letter-spacing="1">PHP · XAMPP · Bootstrap</text>
+          </svg>
+          <div class="work-card-overlay"><div class="work-card-arrow">→</div></div>
+        </div>
+        <div class="work-card-body">
+          <div class="work-card-info">
+            <div class="work-card-cat">Educational · PHP</div>
+            <div class="work-card-title">Leave Management System</div>
+            <div class="work-card-desc">A college leave management portal built with PHP, MySQL and Bootstrap — allowing students to apply and track leaves online.</div>
+            <div class="work-card-tech"><span>PHP</span><span>MySQL</span><span>Bootstrap</span><span>XAMPP</span></div>
+          </div>
+          <a href="https://github.com/GaneshSKumbhar/Leave_Management_System" target="_blank" class="work-card-gh"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg></a>
+        </div>
+      </div>
+
+      <!-- 03 MindSpace — IoT Stress Detection -->
+      <div class="work-card reveal">
+        <div class="work-card-top">
+          <svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;position:absolute;inset:0">
+            <defs>
+              <linearGradient id="g3b" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#b820e6"/><stop offset="100%" style="stop-color:#da7d20"/></linearGradient>
+            </defs>
+            <rect width="480" height="200" fill="var(--bg3)"/>
+            <!-- ESP32 chip -->
+            <rect x="50" y="65" width="90" height="70" rx="6" fill="var(--surface)" stroke="var(--border2)" stroke-width="1.5"/>
+            <rect x="63" y="78" width="64" height="44" rx="3" fill="var(--bg2)"/>
+            <text x="95" y="104" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="var(--accent)" letter-spacing="1">ESP32</text>
+            <!-- chip pins left -->
+            <rect x="42" y="72" width="8" height="4" rx="1" fill="var(--text3)"/>
+            <rect x="42" y="80" width="8" height="4" rx="1" fill="var(--text3)"/>
+            <rect x="42" y="88" width="8" height="4" rx="1" fill="var(--text3)"/>
+            <rect x="42" y="96" width="8" height="4" rx="1" fill="var(--text3)"/>
+            <rect x="42" y="104" width="8" height="4" rx="1" fill="var(--text3)"/>
+            <rect x="42" y="112" width="8" height="4" rx="1" fill="var(--text3)"/>
+            <rect x="42" y="120" width="8" height="4" rx="1" fill="var(--text3)"/>
+            <!-- chip pins right -->
+            <rect x="140" y="72" width="8" height="4" rx="1" fill="var(--text3)"/>
+            <rect x="140" y="80" width="8" height="4" rx="1" fill="var(--text3)"/>
+            <rect x="140" y="88" width="8" height="4" rx="1" fill="var(--text3)"/>
+            <rect x="140" y="96" width="8" height="4" rx="1" fill="var(--text3)"/>
+            <rect x="140" y="104" width="8" height="4" rx="1" fill="var(--text3)"/>
+            <rect x="140" y="112" width="8" height="4" rx="1" fill="var(--text3)"/>
+            <!-- wifi waves -->
+            <path d="M170 100 Q185 85 200 100" stroke="url(#g3b)" stroke-width="2" fill="none" opacity=".5"/>
+            <path d="M160 100 Q185 75 210 100" stroke="url(#g3b)" stroke-width="1.5" fill="none" opacity=".35"/>
+            <path d="M150 100 Q185 65 220 100" stroke="url(#g3b)" stroke-width="1" fill="none" opacity=".2"/>
+            <circle cx="185" cy="100" r="3" fill="var(--accent)" opacity=".7"/>
+            <!-- dashboard card -->
+            <rect x="230" y="28" width="210" height="148" rx="10" fill="var(--surface)" stroke="var(--border2)" stroke-width="1.5"/>
+            <!-- dashboard header -->
+            <rect x="246" y="40" width="80" height="8" rx="4" fill="url(#g3b)" opacity=".7"/>
+            <rect x="246" y="54" width="50" height="5" rx="2.5" fill="var(--text3)"/>
+            <!-- stress gauge arc -->
+            <path d="M340 110 m-35 0 a35 35 0 0 1 70 0" stroke="var(--bg3)" stroke-width="7" fill="none"/>
+            <path d="M340 110 m-35 0 a35 35 0 0 1 55 -22" stroke="url(#g3b)" stroke-width="7" fill="none" stroke-linecap="round"/>
+            <text x="340" y="113" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-weight="bold" fill="var(--text)">68%</text>
+            <text x="340" y="125" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="7" fill="var(--text3)">STRESS</text>
+            <!-- mini heart-rate line -->
+            <polyline points="246,152 255,152 260,140 265,163 270,148 275,152 285,152 290,145 295,158 300,152 310,152" stroke="url(#g3b)" stroke-width="1.8" fill="none" stroke-linejoin="round"/>
+            <text x="246" y="170" font-family="'JetBrains Mono',monospace" font-size="8" fill="var(--text3)" letter-spacing="1">IoT · Sensor · Dashboard</text>
+          </svg>
+          <div class="work-card-overlay"><div class="work-card-arrow">→</div></div>
+        </div>
+        <div class="work-card-body">
+          <div class="work-card-info">
+            <div class="work-card-cat">IoT · Stress Detection</div>
+            <div class="work-card-title">MindSpace</div>
+            <div class="work-card-desc">IoT-based mental wellness app that detects stress levels in real-time using an ESP32 microcontroller with a live web dashboard.</div>
+            <div class="work-card-tech"><span>ESP32</span><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+          </div>
+          <a href="https://github.com/GaneshSKumbhar/MindSpace" target="_blank" class="work-card-gh"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg></a>
+        </div>
+      </div>
+
+      <!-- 04 Portfolio Website -->
+      <div class="work-card reveal">
+        <div class="work-card-top">
+          <svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;position:absolute;inset:0">
+            <defs>
+              <linearGradient id="g4b" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#b820e6"/><stop offset="100%" style="stop-color:#da7d20"/></linearGradient>
+            </defs>
+            <rect width="480" height="200" fill="var(--bg3)"/>
+            <!-- monitor -->
+            <rect x="80" y="22" width="320" height="140" rx="10" fill="var(--surface)" stroke="var(--border2)" stroke-width="1.5"/>
+            <!-- monitor screen -->
+            <rect x="92" y="34" width="296" height="116" rx="6" fill="var(--bg2)"/>
+            <!-- nav bar inside screen -->
+            <rect x="92" y="34" width="296" height="18" rx="6" fill="var(--bg3)"/>
+            <rect x="92" y="46" width="296" height="6" fill="var(--bg3)"/>
+            <rect x="102" y="38" width="28" height="7" rx="3" fill="url(#g4b)" opacity=".6"/>
+            <rect x="230" y="39" width="22" height="5" rx="2" fill="var(--text3)"/>
+            <rect x="258" y="39" width="22" height="5" rx="2" fill="var(--text3)"/>
+            <rect x="286" y="39" width="22" height="5" rx="2" fill="var(--text3)"/>
+            <rect x="350" y="37" width="28" height="9" rx="4" fill="url(#g4b)" opacity=".6"/>
+            <!-- hero section inside screen -->
+            <rect x="102" y="60" width="120" height="11" rx="3" fill="url(#g4b)" opacity=".4"/>
+            <rect x="102" y="76" width="90" height="7" rx="2" fill="var(--text3)"/>
+            <rect x="102" y="88" width="104" height="7" rx="2" fill="var(--text3)"/>
+            <rect x="102" y="104" width="44" height="14" rx="7" fill="url(#g4b)" opacity=".8"/>
+            <rect x="152" y="104" width="44" height="14" rx="7" fill="none" stroke="var(--border2)" stroke-width="1.2"/>
+            <!-- profile circle inside screen -->
+            <circle cx="330" cy="95" r="30" fill="var(--bg)" stroke="url(#g4b)" stroke-width="2"/>
+            <circle cx="330" cy="86" r="10" fill="var(--bg3)"/>
+            <ellipse cx="330" cy="112" rx="18" ry="12" fill="var(--bg3)"/>
+            <!-- stand -->
+            <rect x="222" y="162" width="36" height="10" rx="3" fill="var(--bg2)" stroke="var(--border)" stroke-width="1"/>
+            <rect x="200" y="170" width="80" height="6" rx="3" fill="var(--bg2)" stroke="var(--border)" stroke-width="1"/>
+            <!-- code tag decoration -->
+            <text x="86" y="195" font-family="'JetBrains Mono',monospace" font-size="9" fill="var(--text3)" opacity=".6">&lt;html&gt;</text>
+            <text x="360" y="195" font-family="'JetBrains Mono',monospace" font-size="9" fill="var(--text3)" opacity=".6">&lt;/html&gt;</text>
+          </svg>
+          <div class="work-card-overlay"><div class="work-card-arrow">→</div></div>
+        </div>
+        <div class="work-card-body">
+          <div class="work-card-info">
+            <div class="work-card-cat">Responsive Design</div>
+            <div class="work-card-title">Portfolio Website</div>
+            <div class="work-card-desc">Personal developer portfolio with dark/light mode, smooth animations, EmailJS contact form and certificate gallery.</div>
+            <div class="work-card-tech"><span>HTML5</span><span>CSS3</span><span>JavaScript</span></div>
+          </div>
+          <a href="https://github.com/GaneshSKumbhar/portfolio" target="_blank" class="work-card-gh"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg></a>
+        </div>
+      </div>
+
+    </div>
+    <div class="work-more"><a href="https://github.com/GaneshSKumbhar" target="_blank" class="btn btn-outline">View All on GitHub →</a></div>
+  </div>
+</section>
+
+<!-- CERTIFICATES -->
+<section id="certificates" class="section certs">
+  <div class="container">
+    <div class="section-tag">Achievements</div>
+    <h2 class="section-heading">Certificates & <span class="grad-text">Awards</span></h2>
+    <p class="section-sub">Recognitions from Infosys, hackathons, competitions and college events.</p>
+    <div class="cert-preview-stats reveal">
+      <div class="cps-item"><span class="cps-num">25+</span><span class="cps-label">Total</span></div>
+      <div class="cps-divider"></div>
+      <div class="cps-item"><span class="cps-num">3+</span><span class="cps-label">Courses</span></div>
+      <div class="cps-divider"></div>
+      <div class="cps-item"><span class="cps-num">3+</span><span class="cps-label">Hackathons</span></div>
+      <div class="cps-divider"></div>
+      <div class="cps-item"><span class="cps-num">5+</span><span class="cps-label">Events &amp; Comps</span></div>
+    </div>
+    <div class="cert-preview-grid reveal">
+      <a href="certificates.html?filter=course" class="cert-preview-card"><div class="cpc-icon">📚</div><div class="cpc-body"><div class="cpc-cat">Courses</div><div class="cpc-examples">Infosys Web Dev · Python · Database</div></div><div class="cpc-arrow">→</div></a>
+      <a href="certificates.html?filter=hackathon" class="cert-preview-card"><div class="cpc-icon">⚡</div><div class="cpc-body"><div class="cpc-cat">Hackathons</div><div class="cpc-examples">RIT 2K25 · TENET Hack · TechFiesta 2026</div></div><div class="cpc-arrow">→</div></a>
+      <a href="certificates.html?filter=event" class="cert-preview-card"><div class="cpc-icon">🎯</div><div class="cpc-body"><div class="cpc-cat">Events</div><div class="cpc-examples">Tech Quiz · Project Presentation</div></div><div class="cpc-arrow">→</div></a>
+      <a href="certificates.html?filter=competition" class="cert-preview-card"><div class="cpc-icon">🏆</div><div class="cpc-body"><div class="cpc-cat">Competitions</div><div class="cpc-examples">Blind Programming Winner · REFLEX 2K25</div></div><div class="cpc-arrow">→</div></a>
+    </div>
+    <div style="text-align:center;margin-top:48px">
+      <a href="certificates.html" class="btn btn-grad">View All Certificates &amp; Gallery →</a>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section id="blog" class="section blog">
+  <div class="container">
+    <div class="section-tag">Writing</div>
+    <h2 class="section-heading">Blog &amp; <span class="grad-text">Thoughts</span></h2>
+    <div class="blog-coming reveal">
+      <div class="blog-coming-icon">✍️</div>
+      <h3>Articles Coming Soon</h3>
+      <p>I'm working on articles about web development, my project journeys, and tech learnings. Stay tuned!</p>
+      <div class="blog-topics">
+        <span class="blog-topic">Web Dev Tips</span><span class="blog-topic">Project Breakdowns</span>
+        <span class="blog-topic">Python Tutorials</span><span class="blog-topic">Career Journey</span>
+      </div>
+      <a href="https://github.com/GaneshSKumbhar" target="_blank" class="btn btn-outline">Follow on GitHub →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section contact">
+  <div class="container">
+    <div class="section-tag">Connect with me</div>
+    <h2 class="section-heading">Get In <span class="grad-text">Touch</span></h2>
+    <p class="section-sub">Have a project in mind or just want to say hi? Drop me a message!</p>
+    <div class="contact-grid">
+      <div class="contact-left reveal">
+        <h3>Let's build something <span class="grad-text">amazing</span> together</h3>
+        <p>I'm currently open to freelance projects, collabs, and full-time roles. Feel free to reach out!</p>
+        <div class="contact-items">
+          <a href="mailto:ganeshkumbhar638@gmail.com" class="contact-item">
+            <div class="ci-icon">✉️</div>
+            <div><div class="ci-label">Email</div><div class="ci-val">ganeshkumbhar638@gmail.com</div></div>
+          </a>
+          <a href="https://github.com/GaneshSKumbhar" target="_blank" class="contact-item">
+            <div class="ci-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg></div>
+            <div><div class="ci-label">GitHub</div><div class="ci-val">GaneshSKumbhar</div></div>
+          </a>
+          <a href="https://www.linkedin.com/in/ganeshkumbhar27/" target="_blank" class="contact-item">
+            <div class="ci-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></div>
+            <div><div class="ci-label">LinkedIn</div><div class="ci-val">ganeshkumbhar27</div></div>
+          </a>
+        </div>
+      </div>
+      <form class="contact-form reveal" id="contactForm" novalidate>
+        <div class="form-row">
+          <div class="form-group"><label for="fname">Name</label><input type="text" id="fname" name="name" placeholder="Your name" required /></div>
+          <div class="form-group"><label for="femail">Email</label><input type="email" id="femail" name="email" placeholder="your@email.com" required /></div>
+        </div>
+        <div class="form-group"><label for="fsubject">Subject</label><input type="text" id="fsubject" name="subject" placeholder="What's this about?" required /></div>
+        <div class="form-group"><label for="fmessage">Message</label><textarea id="fmessage" name="message" rows="5" placeholder="Tell me about your project…" required></textarea></div>
+        <button type="submit" class="btn btn-grad form-submit" id="submitBtn">
+          <span class="btn-txt">Submit Now →</span>
+          <span class="btn-load" style="display:none">Sending…</span>
+        </button>
+        <div class="form-status" id="formStatus"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <span class="footer-logo"><span>G</span>anesh<span>.</span></span>
+        <p class="footer-desc">Building the web, one line at a time.</p>
+      </div>
+      <nav class="footer-nav">
+        <a href="#about">About me</a><a href="#services">Services</a>
+        <a href="#work">My Work</a><a href="certificates.html">Certificates</a><a href="#contact">Contact</a>
+      </nav>
+      <div class="footer-socials">
+        <div class="footer-socials-row">
+          <a href="https://github.com/GaneshSKumbhar" target="_blank" class="fsoc"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg></a>
+          <a href="https://www.linkedin.com/in/ganeshkumbhar27/" target="_blank" class="fsoc"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+          <a href="mailto:ganeshkumbhar638@gmail.com" class="fsoc">✉️</a>
+        </div>
+        <span class="footer-email">ganeshkumbhar638@gmail.com</span>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 Ganesh Kumbhar. All rights reserved.</p>
+      <a href="#hero" class="back-top">BACK TO TOP ↑</a>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+/* ══ EMAILJS ═══════════════════════════════════════════════ */
+const EJS = {
+  publicKey:  'qPr-jzIwW1BHiFvsS',
+  serviceId:  'service_ay6ehon',
+  templateId: 'template_qscfm17',
+};
+if (typeof emailjs !== 'undefined') emailjs.init({ publicKey: EJS.publicKey });
+
+/* ══ THEME ══════════════════════════════════════════════════ */
+const html = document.documentElement;
+const themeBtn = document.getElementById('themeBtn');
+setTheme(localStorage.getItem('theme') || 'light');
+function setTheme(t) {
+  html.setAttribute('data-theme', t);
+  themeBtn.textContent = t === 'dark' ? '☀️' : '🌙';
+  localStorage.setItem('theme', t);
+}
+themeBtn.addEventListener('click', () => setTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'));
+
+/* ══ NAVBAR ═════════════════════════════════════════════════ */
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('solid', window.scrollY > 50);
+}, { passive: true });
+
+/* ══ MOBILE MENU ════════════════════════════════════════════ */
+const sideMenu = document.getElementById('sideMenu');
+const overlay  = document.getElementById('overlay');
+function closeMenu() { sideMenu.classList.remove('open'); overlay.classList.remove('show'); }
+document.getElementById('hamburger').addEventListener('click', () => { sideMenu.classList.add('open'); overlay.classList.add('show'); });
+document.getElementById('sideClose').addEventListener('click', closeMenu);
+overlay.addEventListener('click', closeMenu);
+document.querySelectorAll('.sm-link').forEach(l => l.addEventListener('click', closeMenu));
+
+/* ══ TYPING EFFECT ══════════════════════════════════════════ */
+const roles = ['Full Stack Web Developer', 'Frontend Engineer', 'UI/UX Enthusiast', 'Python Developer'];
+let ri = 0, ci = 0, del = false;
+const typedEl = document.getElementById('typedRole');
+function type() {
+  const r = roles[ri];
+  typedEl.textContent = del ? r.slice(0, --ci) : r.slice(0, ++ci);
+  if (!del && ci === r.length) { del = true; setTimeout(type, 2000); return; }
+  if (del && ci === 0) { del = false; ri = (ri + 1) % roles.length; }
+  setTimeout(type, del ? 38 : 75);
+}
+setTimeout(type, 1000);
+
+/* ══ SCROLL REVEAL ══════════════════════════════════════════ */
+const ro = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.reveal').forEach((el, i) => {
+  el.style.transitionDelay = (i % 4) * 0.09 + 's';
+  ro.observe(el);
+});
+
+/* ══ ACTIVE NAV ═════════════════════════════════════════════ */
+const navLinks = document.querySelectorAll('.nav-link');
+document.querySelectorAll('section[id]').forEach(s => {
+  new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+    });
+  }, { threshold: 0.4 }).observe(s);
+});
+
+/* ══ CONTACT FORM ═══════════════════════════════════════════ */
+document.getElementById('contactForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const form   = e.target;
+  const status = document.getElementById('formStatus');
+  const btn    = document.getElementById('submitBtn');
+  const txt    = btn.querySelector('.btn-txt');
+  const load   = btn.querySelector('.btn-load');
+  function show(cls, msg) { status.textContent = msg; status.className = 'form-status show ' + cls; }
+  function reset() { btn.disabled = false; txt.style.display = ''; load.style.display = 'none'; }
+
+  const name    = form.name.value.trim();
+  const email   = form.email.value.trim();
+  const subject = form.subject.value.trim();
+  const message = form.message.value.trim();
+
+  if (!name || !email || !subject || !message) { show('err', '⚠️ Please fill in all fields.'); return; }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { show('err', '⚠️ Enter a valid email address.'); return; }
+
+  btn.disabled = true; txt.style.display = 'none'; load.style.display = '';
+  status.className = 'form-status'; status.textContent = '';
+
+  try {
+    await emailjs.send(EJS.serviceId, EJS.templateId, {
+      from_name:  name,
+      from_email: email,
+      subject,
+      message,
+      to_name:    'Ganesh',
+      reply_to:   email
+    });
+    show('ok', "🚀 Message sent! I'll get back to you soon.");
+    form.reset();
+  } catch (err) {
+    show('err', '❌ Something went wrong. Email me directly: ganeshkumbhar638@gmail.com');
+  } finally { reset(); }
+});
+</script>
+</body>
+</html>
