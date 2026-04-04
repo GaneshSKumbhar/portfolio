@@ -338,8 +338,8 @@
           </div>
         </div>
         <div class="about-stats-row">
-          <div class="astat"><span class="astat-n">4+</span><span class="astat-l">Projects</span></div>
-          <div class="astat"><span class="astat-n">10+</span><span class="astat-l">Certs</span></div>
+          <div class="astat"><span class="astat-n">6+</span><span class="astat-l">Projects</span></div>
+          <div class="astat"><span class="astat-n">40+</span><span class="astat-l">Certs</span></div>
           <div class="astat"><span class="astat-n">2+</span><span class="astat-l">Years</span></div>
         </div>
       </div>
@@ -627,6 +627,92 @@
         </div>
       </div>
 
+      <!-- 05 Gesture-Runner -->
+      <div class="work-card reveal">
+        <div class="work-card-top">
+          <svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;position:absolute;inset:0">
+            <defs>
+              <linearGradient id="g5_brand" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#b820e6"/><stop offset="100%" style="stop-color:#da7d20"/></linearGradient>
+              <filter id="f_glow"><feGaussianBlur stdDeviation="2.5" result="blur"/><feComposite in="SourceGraphic" in2="blur" operator="over"/></filter>
+            </defs>
+            <rect width="480" height="200" fill="var(--bg3)"/>
+            <!-- Cyber hand skeleton -->
+            <path d="M60 140 q0-30 20-35 t25 15 t15-10 t10-25" stroke="url(#g5_brand)" stroke-width="2.5" fill="none" stroke-linecap="round" filter="url(#f_glow)"/>
+            <circle cx="62" cy="142" r="4" fill="var(--accent)"/>
+            <circle cx="82" cy="108" r="3" fill="url(#g5_brand)"/>
+            <circle cx="108" cy="122" r="3" fill="url(#g5_brand)"/>
+            <!-- Scanning lines -->
+            <rect x="50" y="80" width="80" height="90" rx="4" fill="none" stroke="var(--accent)" stroke-width="1" stroke-dasharray="4" opacity=".3"/>
+            <line x1="50" y1="110" x2="130" y2="110" stroke="var(--accent2)" stroke-width="0.7" opacity=".6">
+              <animate attributeName="y1" values="80;170;80" dur="3s" infinite="true"/>
+              <animate attributeName="y2" values="80;170;80" dur="3s" infinite="true"/>
+            </line>
+            <!-- Game Canvas -->
+            <rect x="180" y="35" width="240" height="130" rx="12" fill="var(--surface)" stroke="var(--border2)" stroke-width="2"/>
+            <rect x="190" y="45" width="220" height="110" rx="6" fill="#0c0e14"/>
+            <!-- Path & Character -->
+            <path d="M220 155 l80 -100 m80 100 l-80 -100" stroke="#1f2937" stroke-width="2" opacity=".4"/>
+            <path d="M300 55 l-20 80 l40 0 z" fill="url(#g5_brand)" opacity=".8"/>
+            <!-- Motion particles -->
+            <circle cx="280" cy="135" r="2" fill="var(--accent)" opacity=".6"><animate attributeName="opacity" values="0;1;0" dur="1s" repeatCount="indefinite" begin="0.1s"/></circle>
+            <circle cx="320" cy="135" r="2" fill="var(--accent2)" opacity=".6"><animate attributeName="opacity" values="0;1;0" dur="1.2s" repeatCount="indefinite" begin="0.4s"/></circle>
+            <text x="300" y="172" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="var(--text3)" letter-spacing="2">REALTIME MOTION SENSING</text>
+          </svg>
+          <div class="work-card-overlay"><div class="work-card-arrow">→</div></div>
+        </div>
+        <div class="work-card-body">
+          <div class="work-card-info">
+            <div class="work-card-cat">AI · Computer Vision</div>
+            <div class="work-card-title">Gesture-Runner</div>
+            <div class="work-card-desc">Control games like Subway Surfers using real-time hand gestures. Built with OpenCV and MediaPipe for high-accuracy motion tracking.</div>
+            <div class="work-card-tech"><span>Python</span><span>OpenCV</span><span>MediaPipe</span><span>PyAutoGUI</span></div>
+          </div>
+          <a href="https://github.com/GaneshSKumbhar/gesture-runner" target="_blank" class="work-card-gh"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg></a>
+        </div>
+      </div>
+
+      <!-- 06 Soil Moisture Detection -->
+      <div class="work-card reveal">
+        <div class="work-card-top">
+          <svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;position:absolute;inset:0">
+            <defs>
+              <linearGradient id="g6_brand" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#b820e6"/><stop offset="100%" style="stop-color:#da7d20"/></linearGradient>
+              <linearGradient id="g6_dirt" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#3f2a1d"/><stop offset="100%" style="stop-color:#21150c"/></linearGradient>
+            </defs>
+            <rect width="480" height="200" fill="var(--bg3)"/>
+            <!-- Stylized Pot -->
+            <path d="M120 180 l80 0 l10 -50 l-100 0 z" fill="url(#g6_dirt)" opacity=".9"/>
+            <rect x="110" y="125" width="100" height="8" rx="2" fill="#4a3728"/>
+            <!-- Vibrant Plant -->
+            <path d="M160 125 q-15-40 0-90 q15 50 0 90" fill="url(#g6_brand)" opacity=".8"/>
+            <path d="M160 90 q-40-10-55-40 q15 25 55 40" fill="url(#g6_brand)" opacity=".6"/>
+            <path d="M160 90 q40-10 55-40 q-15 25-55 40" fill="url(#g6_brand)" opacity=".6"/>
+            <!-- Modern Sensor Probe -->
+            <rect x="220" y="80" width="4" height="90" rx="2" fill="var(--text3)"/>
+            <rect x="212" y="70" width="20" height="25" rx="4" fill="var(--surface)" stroke="var(--border2)" stroke-width="1.5"/>
+            <circle cx="222" cy="78" r="3" fill="var(--accent)"><animate attributeName="opacity" values="1;0.4;1" dur="2s" infinite="true"/></circle>
+            <!-- Data Visualization -->
+            <circle cx="360" cy="100" r="50" fill="none" stroke="var(--bg2)" stroke-width="10"/>
+            <circle cx="360" cy="100" r="50" fill="none" stroke="url(#g6_brand)" stroke-width="10" stroke-dasharray="220" stroke-dashoffset="60" stroke-linecap="round" opacity=".8"/>
+            <text x="360" y="105" text-anchor="middle" font-family="Georgia,serif" font-size="24" font-weight="bold" fill="var(--text)">72%</text>
+            <text x="360" y="125" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="var(--text3)" letter-spacing="1">SOIL HEALTH</text>
+            <!-- Floating particles -->
+            <circle cx="320" cy="40" r="3" fill="var(--accent)" opacity=".2"><animate attributeName="cy" values="40;20;40" dur="4s" infinite="true"/></circle>
+            <circle cx="410" cy="150" r="4" fill="var(--accent2)" opacity=".1"><animate attributeName="cy" values="150;170;150" dur="5s" infinite="true"/></circle>
+          </svg>
+          <div class="work-card-overlay"><div class="work-card-arrow">→</div></div>
+        </div>
+        <div class="work-card-body">
+          <div class="work-card-info">
+            <div class="work-card-cat">IoT · Embedded Systems</div>
+            <div class="work-card-title">Soil Moisture Detection</div>
+            <div class="work-card-desc">An automated soil health monitoring system using moisture sensors and microcontrollers to optimize irrigation and plant care.</div>
+            <div class="work-card-tech"><span>Arduino</span><span>C++</span><span>IoT Sensors</span><span>Embedded</span></div>
+          </div>
+          <a href="https://github.com/GaneshSKumbhar/Soil_Moisture_Detection" target="_blank" class="work-card-gh"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg></a>
+        </div>
+      </div>
+
     </div>
     <div class="work-more"><a href="https://github.com/GaneshSKumbhar" target="_blank" class="btn btn-outline">View All on GitHub →</a></div>
   </div>
@@ -639,19 +725,20 @@
     <h2 class="section-heading">Certificates & <span class="grad-text">Awards</span></h2>
     <p class="section-sub">Recognitions from Infosys, hackathons, competitions and college events.</p>
     <div class="cert-preview-stats reveal">
-      <div class="cps-item"><span class="cps-num">25+</span><span class="cps-label">Total</span></div>
+      <div class="cps-item"><span class="cps-num">40+</span><span class="cps-label">Total</span></div>
       <div class="cps-divider"></div>
-      <div class="cps-item"><span class="cps-num">3+</span><span class="cps-label">Courses</span></div>
+      <div class="cps-item"><span class="cps-num">16</span><span class="cps-label">Google Cloud</span></div>
+      <div class="cps-divider"></div>
+      <div class="cps-item"><span class="cps-num">18+</span><span class="cps-label">Courses</span></div>
       <div class="cps-divider"></div>
       <div class="cps-item"><span class="cps-num">3+</span><span class="cps-label">Hackathons</span></div>
-      <div class="cps-divider"></div>
-      <div class="cps-item"><span class="cps-num">5+</span><span class="cps-label">Events &amp; Comps</span></div>
     </div>
     <div class="cert-preview-grid reveal">
-      <a href="certificates.html?filter=course" class="cert-preview-card"><div class="cpc-icon">📚</div><div class="cpc-body"><div class="cpc-cat">Courses</div><div class="cpc-examples">Infosys Web Dev · Python · Database</div></div><div class="cpc-arrow">→</div></a>
+      <a href="certificates.html?filter=google" class="cert-preview-card"><div class="cpc-icon">🔴</div><div class="cpc-body"><div class="cpc-cat">Google Cloud</div><div class="cpc-examples">16 Badges · Cloud Spanner · Security · ML</div></div><div class="cpc-arrow">→</div></a>
+      <a href="certificates.html?filter=springboard" class="cert-preview-card"><div class="cpc-icon">🟠</div><div class="cpc-body"><div class="cpc-cat">Springboard</div><div class="cpc-examples">15 Courses · AI · Robotics · Hardware</div></div><div class="cpc-arrow">→</div></a>
       <a href="certificates.html?filter=hackathon" class="cert-preview-card"><div class="cpc-icon">⚡</div><div class="cpc-body"><div class="cpc-cat">Hackathons</div><div class="cpc-examples">RIT 2K25 · TENET Hack · TechFiesta 2026</div></div><div class="cpc-arrow">→</div></a>
-      <a href="certificates.html?filter=event" class="cert-preview-card"><div class="cpc-icon">🎯</div><div class="cpc-body"><div class="cpc-cat">Events</div><div class="cpc-examples">Tech Quiz · Project Presentation</div></div><div class="cpc-arrow">→</div></a>
-      <a href="certificates.html?filter=competition" class="cert-preview-card"><div class="cpc-icon">🏆</div><div class="cpc-body"><div class="cpc-cat">Competitions</div><div class="cpc-examples">Blind Programming Winner · REFLEX 2K25</div></div><div class="cpc-arrow">→</div></a>
+      <a href="certificates.html?filter=coursera" class="cert-preview-card"><div class="cpc-icon">🔵</div><div class="cpc-body"><div class="cpc-cat">Coursera</div><div class="cpc-examples">Cybersecurity · IBM Generative AI · AWS</div></div><div class="cpc-arrow">→</div></a>
+      <a href="certificates.html?filter=competition" class="cert-preview-card"><div class="cpc-icon">🏆</div><div class="cpc-body"><div class="cpc-cat">Competitions</div><div class="cpc-examples">Blind Programming Winner · Excellence (Top 15)</div></div><div class="cpc-arrow">→</div></a>
     </div>
     <div style="text-align:center;margin-top:48px">
       <a href="certificates.html" class="btn btn-grad">View All Certificates &amp; Gallery →</a>

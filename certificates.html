@@ -301,7 +301,6 @@
     padding:22px 24px 14px;flex-shrink:0;
     border-bottom:1px solid var(--border);
   }
-  .lb-title-wrap{}
   .lb-issuer-tag{font-family:'JetBrains Mono',monospace;font-size:0.68rem;color:var(--accent);letter-spacing:0.12em;text-transform:uppercase}
   .lb-title{font-family:'Instrument Serif',serif;font-size:1.35rem;color:var(--text);margin-top:3px}
   .lb-head-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
@@ -500,13 +499,22 @@ const CERTIFICATES = [
   { name:"Generative AI: Introduction and Applications",  issuer:"Coursera / IBM",                date:"Mar 6, 2026",  category:"coursera", file:"assets/certificates/Coursera 6VVRKOBNHQ84.pdf", type:"pdf",   emoji:"🤖", verify:"https://coursera.org/verify/6VVRKOBNHQ84" },
 
   // ── GOOGLE CLOUD ──────────────────────────────────────
-  { name:"Cloud Speech API: 3 Ways",                      issuer:"Google Cloud", date:"2025", category:"google", file:"assets/certificates/cloud-speech-api-3-ways-skill-badge.png",              type:"image", emoji:"🎙️" },
-  { name:"Build a Secure Google Cloud Network",           issuer:"Google Cloud", date:"2025", category:"google", file:"assets/certificates/build-a-secure-google-cloud-network-skill-badge.png",  type:"image", emoji:"🔐" },
-  { name:"Analyze BigQuery Data in Connected Sheets",     issuer:"Google Cloud", date:"2025", category:"google", file:"assets/certificates/google/analyze-bigquery-data-in-connected-sheets-skill-bad__1_.png", type:"image", emoji:"☁️" },
-  { name:"Use Functions, Formulas and Charts in Google Sheets", issuer:"Google Workspace", date:"2025", category:"google", file:"assets/certificates/google/use-functions-formulas-and-charts-in-google-sheets-__1_.png", type:"image", emoji:"📊" },
-  { name:"Streaming Analytics into BigQuery",             issuer:"Google Cloud", date:"2025", category:"google", file:"assets/certificates/google/streaming-analytics-into-bigquery-skill-badge__1_.png", type:"image", emoji:"📡" },
-  { name:"Get Started with Google Workspace Tools",       issuer:"Google Workspace", date:"2025", category:"google", file:"assets/certificates/google/get-started-with-google-workspace-tools-skill-badge__2_.png", type:"image", emoji:"🔧" },
-  { name:"App Building with AppSheet",                    issuer:"Google Cloud", date:"2025", category:"google", file:"assets/certificates/google/app-building-with-appsheet-skill-badge__1_.png", type:"image", emoji:"📱" },
+  { name:"Cloud Speech API: 3 Ways Skill Badge",          issuer:"Google Cloud", date:"Mar 25, 2026", category:"google", file:"assets/certificates/cloud-speech-api-3-ways-skill-badge.png", type:"image", emoji:"🎙️" },
+  { name:"Build a Secure Google Cloud Network Skill Badge", issuer:"Google Cloud", date:"Mar 25, 2026", category:"google", file:"assets/certificates/build-a-secure-google-cloud-network-skill-badge.png", type:"image", emoji:"🔐" },
+  { name:"Analyze BigQuery Data in Connected Sheets Skill Badge", issuer:"Google Cloud", date:"Mar 8, 2026", category:"google", file:"assets/certificates/google/analyze-bigquery-data-in-connected-sheets-skill-bad__1_.png", type:"image", emoji:"☁️" },
+  { name:"Use Functions, Formulas, and Charts in Google Sheets Skill Badge", issuer:"Google Workspace", date:"Mar 14, 2026", category:"google", file:"assets/certificates/google/use-functions-formulas-and-charts-in-google-sheets-__1_.png", type:"image", emoji:"📊" },
+  { name:"Streaming Analytics into BigQuery Skill Badge", issuer:"Google Cloud", date:"Mar 17, 2026", category:"google", file:"assets/certificates/google/streaming-analytics-into-bigquery-skill-badge__1_.png", type:"image", emoji:"📡" },
+  { name:"Get Started with Google Workspace Tools Skill Badge", issuer:"Google Workspace", date:"Mar 5, 2026", category:"google", file:"assets/certificates/google/get-started-with-google-workspace-tools-skill-badge__2_.png", type:"image", emoji:"🔧" },
+  { name:"App Building with AppSheet Skill Badge",        issuer:"Google Cloud", date:"Mar 8, 2026", category:"google", file:"assets/certificates/google/app-building-with-appsheet-skill-badge__1_.png", type:"image", emoji:"📱" },
+  { name:"Create and Manage Cloud Spanner Instances Skill Badge", issuer:"Google Cloud", date:"Mar 30, 2026", category:"google", file:"assets/certificates/google/create-and-manage-cloud-spanner-instances-skill-bad.png", type:"image", emoji:"💾" },
+  { name:"Analyze Speech and Language with Google APIs Skill Badge", issuer:"Google Cloud", date:"Apr 4, 2026", category:"google", file:"assets/certificates/google/analyze-speech-and-language-with-google-apis-skill-.png", type:"image", emoji:"🎙️" },
+  { name:"App Engine: 3 Ways Skill Badge",               issuer:"Google Cloud", date:"Apr 4, 2026", category:"google", file:"assets/certificates/google/app-engine-3-ways-skill-badge.png", type:"image", emoji:"🚀" },
+  { name:"Implement Cloud Security Fundamentals on Google Cloud Skill Badge", issuer:"Google Cloud", date:"Apr 4, 2026", category:"google", file:"assets/certificates/google/implement-cloud-security-fundamentals-on-google-clo.png", type:"image", emoji:"🛡️" },
+  { name:"Implement Load Balancing on Compute Engine Skill Badge", issuer:"Google Cloud", date:"Apr 4, 2026", category:"google", file:"assets/certificates/google/implement-load-balancing-on-compute-engine-skill-ba.png", type:"image", emoji:"⚖️" },
+  { name:"Prepare Data for ML APIs on Google Cloud Skill Badge", issuer:"Google Cloud", date:"Apr 4, 2026", category:"google", file:"assets/certificates/google/prepare-data-for-ml-apis-on-google-cloud-skill-badg.png", type:"image", emoji:"🤖" },
+  { name:"The Basics of Google Cloud Compute Skill Badge", issuer:"Google Cloud", date:"Apr 4, 2026", category:"google", file:"assets/certificates/google/the-basics-of-google-cloud-compute-skill-badge.png", type:"image", emoji:"🖥️" },
+  { name:"Use APIs to Work with Cloud Storage Skill Badge", issuer:"Google Cloud", date:"Apr 4, 2026", category:"google", file:"assets/certificates/google/use-apis-to-work-with-cloud-storage-skill-badge.png", type:"image", emoji:"📦" },
+  { name:"Using the Google Cloud Speech API",             issuer:"Google Cloud", date:"Apr 4, 2026", category:"google", file:"assets/certificates/google/using-the-google-cloud-speech-api.png", type:"image", emoji:"🗣️" },
 
   // ── HACKATHONS ────────────────────────────────────────
   { name:"RIT Hackathon 2K25",                            issuer:"Rajarambapu Institute of Technology",       date:"Mar 21–22, 2025", category:"hackathon",   file:"assets/certificates/hackathon/rit-hackathon-2k25.png",  type:"image", emoji:"⚡" },
@@ -618,8 +626,8 @@ function render(){
   const groups = {};
   visibleCerts.forEach(c=>{ (groups[c.category]=groups[c.category]||[]).push(c); });
 
-  const categoryOrder = ['course','hackathon','event','competition'];
-  const categoryNames = {course:'Courses',hackathon:'Hackathons',event:'Events',competition:'Competitions'};
+  const categoryOrder = ['springboard', 'coursera', 'google', 'hackathon', 'event', 'competition'];
+  const categoryNames = { springboard:'Infosys Springboard', coursera:'Coursera', google:'Google Cloud', hackathon:'Hackathons', event:'Events', competition:'Competitions' };
 
   const showGroups = activeFilter === 'all';
 
