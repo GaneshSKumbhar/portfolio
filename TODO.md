@@ -1,10 +1,11 @@
-# TODO: Fix Dark Mode and Light Mode Colors for Tabs and Other Elements
+# Integration of Internship AI Certificates
 
-## Steps to Complete
+## Plan Breakdown
+1. ✅ [Complete] Create TODO.md with steps
+2. 🔄 Update certificates.html: Add internship filter tab, CERTIFICATES array entries (16 certs), stats (#internshipCount), ribbon CSS/grouping
+3. 🔄 Update index.html: Update preview stats (total 58+), add internship preview card to grid
+4. 🔄 Test: Verify display, filters, lightbox, stats update
+5. ✅ [Complete] Attempt completion
 
-- [x] Analyze all elements in index1.html for dark mode compatibility (identify missing dark: classes on tabs, buttons, cards, forms, footer, etc.)
-- [x] Update script1.js: Remove direct body.style changes, add logic to switch theme toggle icon (moon to sun and vice versa)
-- [x] Update index1.html: Add dark: classes to navigation tabs, buttons, cards, forms, footer, and other sections for proper dark mode styling
-- [x] Test the changes by launching the site in browser and toggling themes to verify colors and icons
-- [x] Ensure responsiveness and hover effects work in both light and dark modes
-- [x] Final review and cleanup if needed
+**Current: Starting file edits.**
+

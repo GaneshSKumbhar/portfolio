@@ -431,7 +431,7 @@
 <div class="gallery-section">
   <div class="container">
     <div class="cert-gallery" id="certGallery">
-      <!-- rendered by JS from CERTIFICATES array below -->
+      <!-- rendered by JS -->
     </div>
   </div>
 </div>
@@ -461,76 +461,242 @@
 
 <script>
 /* ════════════════════════════════════════════════════════════
-   ✏️  ADD / EDIT YOUR CERTIFICATES HERE
-   ════════════════════════════════════════════════════════════
-   Each entry:
-   {
-     name:     "Certificate title",
-     issuer:   "Who gave it",
-     date:     "2024",
-     category: "course" | "hackathon" | "event" | "competition",
-     file:     "assets/certificates/filename.jpg",  ← path to your file
-     type:     "image" | "pdf",                      ← file type
-     emoji:    "🏆"   ← shown when no image / as PDF icon
-   }
+   CERTIFICATES DATA
    ════════════════════════════════════════════════════════════ */
 const CERTIFICATES = [
 
-  // ── INFOSYS SPRINGBOARD ──────────────────────────────
-  { name:"Introduction to Hardware & Software",           issuer:"Infosys Springboard", date:"Feb 10, 2026", category:"springboard", file:"assets/certificates/fb19ee50-abc8-42c9-9aa2-d61047f1b77a.pdf",   type:"pdf",   emoji:"🔌" },
-  { name:"Introduction to DobotStudio",                   issuer:"Infosys Springboard", date:"Feb 10, 2026", category:"springboard", file:"assets/certificates/9d2f3bf6-fa56-4d3c-bd09-54dcb688a573.pdf",   type:"pdf",   emoji:"🤖" },
-  { name:"Introduction to Line Finder & Ultrasonic Sensor",issuer:"Infosys Springboard",date:"Feb 10, 2026", category:"springboard", file:"assets/certificates/01395ba8-1122-4c02-a45e-0b570861742b.pdf",   type:"pdf",   emoji:"📡" },
-  { name:"Programming Activities — Drive the Bot",        issuer:"Infosys Springboard", date:"Feb 10, 2026", category:"springboard", file:"assets/certificates/4e68d6aa-f9d9-437b-81a7-be006b5d7a54.pdf",   type:"pdf",   emoji:"💻" },
-  { name:"Suction and Gripper Activities",                issuer:"Infosys Springboard", date:"Feb 10, 2026", category:"springboard", file:"assets/certificates/7629a579-461d-44b0-a54c-0fa83e1f9a77.pdf",   type:"pdf",   emoji:"🦾" },
-  { name:"Performing Teaching & Playback Tasks",          issuer:"Infosys Springboard", date:"Feb 10, 2026", category:"springboard", file:"assets/certificates/62a3879d-8330-451e-a458-6778b91932ed.pdf",   type:"pdf",   emoji:"▶️" },
-  { name:"Robot Arm in Industries",                       issuer:"Infosys Springboard", date:"Feb 10, 2026", category:"springboard", file:"assets/certificates/77e4c32e-cb63-48eb-92df-6eb275bcfd8d.pdf",   type:"pdf",   emoji:"🏭" },
-  { name:"Design and Build the TaskBot",                  issuer:"Infosys Springboard", date:"Feb 10, 2026", category:"springboard", file:"assets/certificates/ced9f6b4-4d2a-41b0-88b3-05bdcecce5d4.pdf",   type:"pdf",   emoji:"⚙️" },
-  { name:"Mini Challenge — Garbage Moving Robot",         issuer:"Infosys Springboard", date:"Feb 10, 2026", category:"springboard", file:"assets/certificates/9f26fb10-0e42-4bc0-a3c1-38754a589a91.pdf",   type:"pdf",   emoji:"🗑️" },
-  { name:"Session 1 — Programming and Artificial Intelligence", issuer:"Infosys Springboard", date:"Feb 10, 2026", category:"springboard", file:"assets/certificates/91cfcf59-3121-4256-a6a0-05dea7fd720e.pdf", type:"pdf", emoji:"🧠" },
-  { name:"Session 2 — Autonomous Car Physics and Race",   issuer:"Infosys Springboard", date:"Feb 11, 2026", category:"springboard", file:"assets/certificates/0d23f0a6-4027-4cfb-8fca-58deffffca71.pdf",   type:"pdf",   emoji:"🚗" },
-  { name:"Session 3 — Computer Vision",                  issuer:"Infosys Springboard", date:"Feb 15, 2026", category:"springboard", file:"assets/certificates/173727fc-0a69-4cb6-8beb-a84d348a62c0.pdf",   type:"pdf",   emoji:"👁️" },
-  { name:"Session 4 — Object Detection",                 issuer:"Infosys Springboard", date:"Feb 15, 2026", category:"springboard", file:"assets/certificates/c459a658-c5ee-4768-aff8-29eed4f41b7a.pdf",   type:"pdf",   emoji:"🔍" },
-  { name:"Introduction to Quality Control with AI",      issuer:"Infosys Springboard", date:"Feb 15, 2026", category:"springboard", file:"assets/certificates/6bf603cf-d1c0-48ad-ae2c-16d1e60ac868.pdf",   type:"pdf",   emoji:"✅" },
-  { name:"New AI Model — Fischertechnik Quality Control", issuer:"Infosys Springboard", date:"Feb 15, 2026", category:"springboard", file:"assets/certificates/f8262c94-da0d-4831-9eb9-ff8840fa110b.pdf",   type:"pdf",   emoji:"🏆" },
+  // ── INFOSYS SPRINGBOARD — ROBOTICS / DOBOT (root-level PDFs) ──
+  { name:"Introduction to Hardware & Software",
+    issuer:"Infosys Springboard", date:"Feb 10, 2026", category:"springboard",
+    file:"assets/certificates/fb19ee50-abc8-42c9-9aa2-d61047f1b77a.pdf", type:"pdf", emoji:"🔌" },
 
-  // ── COURSERA ─────────────────────────────────────────
-  { name:"Foundations of Cybersecurity",                  issuer:"Coursera / Google",             date:"Mar 5, 2026",  category:"coursera", file:"assets/certificates/Coursera 2M5XYC8GE4TY.pdf", type:"pdf",   emoji:"🔒", verify:"https://coursera.org/verify/2M5XYC8GE4TY" },
-  { name:"Python for Serverless Applications & Automation on AWS", issuer:"Coursera / Amazon Web Services", date:"Mar 8, 2026", category:"coursera", file:"assets/certificates/Coursera 2P3JM8KE1YGI.pdf", type:"pdf", emoji:"🐍", verify:"https://coursera.org/verify/2P3JM8KE1YGI" },
-  { name:"Generative AI: Introduction and Applications",  issuer:"Coursera / IBM",                date:"Mar 6, 2026",  category:"coursera", file:"assets/certificates/Coursera 6VVRKOBNHQ84.pdf", type:"pdf",   emoji:"🤖", verify:"https://coursera.org/verify/6VVRKOBNHQ84" },
+  { name:"Introduction to DobotStudio",
+    issuer:"Infosys Springboard", date:"Feb 10, 2026", category:"springboard",
+    file:"assets/certificates/9d2f3bf6-fa56-4d3c-bd09-54dcb688a573.pdf", type:"pdf", emoji:"🤖" },
 
-  // ── GOOGLE CLOUD ──────────────────────────────────────
-  { name:"Cloud Speech API: 3 Ways Skill Badge",          issuer:"Google Cloud", date:"Mar 25, 2026", category:"google", file:"assets/certificates/cloud-speech-api-3-ways-skill-badge.png", type:"image", emoji:"🎙️" },
-  { name:"Build a Secure Google Cloud Network Skill Badge", issuer:"Google Cloud", date:"Mar 25, 2026", category:"google", file:"assets/certificates/build-a-secure-google-cloud-network-skill-badge.png", type:"image", emoji:"🔐" },
-  { name:"Analyze BigQuery Data in Connected Sheets Skill Badge", issuer:"Google Cloud", date:"Mar 8, 2026", category:"google", file:"assets/certificates/google/analyze-bigquery-data-in-connected-sheets-skill-bad__1_.png", type:"image", emoji:"☁️" },
-  { name:"Use Functions, Formulas, and Charts in Google Sheets Skill Badge", issuer:"Google Workspace", date:"Mar 14, 2026", category:"google", file:"assets/certificates/google/use-functions-formulas-and-charts-in-google-sheets-__1_.png", type:"image", emoji:"📊" },
-  { name:"Streaming Analytics into BigQuery Skill Badge", issuer:"Google Cloud", date:"Mar 17, 2026", category:"google", file:"assets/certificates/google/streaming-analytics-into-bigquery-skill-badge__1_.png", type:"image", emoji:"📡" },
-  { name:"Get Started with Google Workspace Tools Skill Badge", issuer:"Google Workspace", date:"Mar 5, 2026", category:"google", file:"assets/certificates/google/get-started-with-google-workspace-tools-skill-badge__2_.png", type:"image", emoji:"🔧" },
-  { name:"App Building with AppSheet Skill Badge",        issuer:"Google Cloud", date:"Mar 8, 2026", category:"google", file:"assets/certificates/google/app-building-with-appsheet-skill-badge__1_.png", type:"image", emoji:"📱" },
-  { name:"Create and Manage Cloud Spanner Instances Skill Badge", issuer:"Google Cloud", date:"Mar 30, 2026", category:"google", file:"assets/certificates/google/create-and-manage-cloud-spanner-instances-skill-bad.png", type:"image", emoji:"💾" },
-  { name:"Analyze Speech and Language with Google APIs Skill Badge", issuer:"Google Cloud", date:"Apr 4, 2026", category:"google", file:"assets/certificates/google/analyze-speech-and-language-with-google-apis-skill-.png", type:"image", emoji:"🎙️" },
-  { name:"App Engine: 3 Ways Skill Badge",               issuer:"Google Cloud", date:"Apr 4, 2026", category:"google", file:"assets/certificates/google/app-engine-3-ways-skill-badge.png", type:"image", emoji:"🚀" },
-  { name:"Implement Cloud Security Fundamentals on Google Cloud Skill Badge", issuer:"Google Cloud", date:"Apr 4, 2026", category:"google", file:"assets/certificates/google/implement-cloud-security-fundamentals-on-google-clo.png", type:"image", emoji:"🛡️" },
-  { name:"Implement Load Balancing on Compute Engine Skill Badge", issuer:"Google Cloud", date:"Apr 4, 2026", category:"google", file:"assets/certificates/google/implement-load-balancing-on-compute-engine-skill-ba.png", type:"image", emoji:"⚖️" },
-  { name:"Prepare Data for ML APIs on Google Cloud Skill Badge", issuer:"Google Cloud", date:"Apr 4, 2026", category:"google", file:"assets/certificates/google/prepare-data-for-ml-apis-on-google-cloud-skill-badg.png", type:"image", emoji:"🤖" },
-  { name:"The Basics of Google Cloud Compute Skill Badge", issuer:"Google Cloud", date:"Apr 4, 2026", category:"google", file:"assets/certificates/google/the-basics-of-google-cloud-compute-skill-badge.png", type:"image", emoji:"🖥️" },
-  { name:"Use APIs to Work with Cloud Storage Skill Badge", issuer:"Google Cloud", date:"Apr 4, 2026", category:"google", file:"assets/certificates/google/use-apis-to-work-with-cloud-storage-skill-badge.png", type:"image", emoji:"📦" },
-  { name:"Using the Google Cloud Speech API",             issuer:"Google Cloud", date:"Apr 4, 2026", category:"google", file:"assets/certificates/google/using-the-google-cloud-speech-api.png", type:"image", emoji:"🗣️" },
+  { name:"Introduction to Line Finder & Ultrasonic Sensor",
+    issuer:"Infosys Springboard", date:"Feb 10, 2026", category:"springboard",
+    file:"assets/certificates/01395ba8-1122-4c02-a45e-0b570861742b.pdf", type:"pdf", emoji:"📡" },
 
-  // ── HACKATHONS ────────────────────────────────────────
-  { name:"RIT Hackathon 2K25",                            issuer:"Rajarambapu Institute of Technology",       date:"Mar 21–22, 2025", category:"hackathon",   file:"assets/certificates/hackathon/rit-hackathon-2k25.png",  type:"image", emoji:"⚡" },
-  { name:"TENET Hack 25",                                 issuer:"AISSMS Institute of Information Technology, Pune", date:"2025",    category:"hackathon",   file:"assets/certificates/hackathon/TENET.pdf",               type:"pdf",   emoji:"⚡" },
-  { name:"TechFiesta 2026 — International Hackathon",     issuer:"Pune Institute of Computer Technology",    date:"2026",           category:"hackathon",   file:"assets/certificates/hackathon/BlueFlame.pdf",            type:"pdf",   emoji:"🔥" },
+  { name:"Programming Activities — Drive the Bot",
+    issuer:"Infosys Springboard", date:"Feb 10, 2026", category:"springboard",
+    file:"assets/certificates/4e68d6aa-f9d9-437b-81a7-be006b5d7a54.pdf", type:"pdf", emoji:"💻" },
 
-  // ── COMPETITIONS ──────────────────────────────────────
-  { name:"Blind Programming — Winner",                    issuer:"REFLEX 2K25 · Ashokrao Mane Polytechnic",  date:"Mar 11, 2025",   category:"competition", file:"assets/certificates/competition/reflex-2k25-winner.png", type:"image", emoji:"🏆" },
-  { name:"SETCODE — Certificate of Excellence (Top 15)",  issuer:"BHASKAR 2026 · Ekasutram x GeeksforGeeks", date:"2026",           category:"competition", file:"assets/certificates/setcode-bhaskar-2026.pdf",           type:"pdf",   emoji:"🥇" },
+  { name:"Suction and Gripper Activities",
+    issuer:"Infosys Springboard", date:"Feb 10, 2026", category:"springboard",
+    file:"assets/certificates/7629a579-461d-44b0-a54c-0fa83e1f9a77.pdf", type:"pdf", emoji:"🦾" },
 
-  // ── EVENTS ────────────────────────────────────────────
-  { name:"Online Hunt — VIT x ChaiCode",                  issuer:"Vishwakarma Institute of Technology, Pune", date:"Jan 2026",      category:"event",       file:"assets/certificates/event/Online_Hunt.pdf",             type:"pdf",   emoji:"🎯" },
+  { name:"Performing Teaching & Playback Tasks",
+    issuer:"Infosys Springboard", date:"Feb 10, 2026", category:"springboard",
+    file:"assets/certificates/ced9f6b4-4d2a-41b0-88b3-05bdcecce5d4.pdf", type:"pdf", emoji:"▶️" },
 
-  // ADD MORE CERTIFICATES HERE following the same pattern
+  { name:"Robot Arm in Industries",
+    issuer:"Infosys Springboard", date:"Feb 10, 2026", category:"springboard",
+    file:"assets/certificates/9f26fb10-0e42-4bc0-a3c1-38754a589a91.pdf", type:"pdf", emoji:"🏭" },
+
+  { name:"Design and Build the TaskBot",
+    issuer:"Infosys Springboard", date:"Feb 10, 2026", category:"springboard",
+    file:"assets/certificates/62a3879d-8330-451e-a458-6778b91932ed.pdf", type:"pdf", emoji:"⚙️" },
+
+  { name:"Mini Challenge — Garbage Moving Robot",
+    issuer:"Infosys Springboard", date:"Feb 10, 2026", category:"springboard",
+    file:"assets/certificates/77e4c32e-cb63-48eb-92df-6eb275bcfd8d.pdf", type:"pdf", emoji:"🗑️" },
+
+  { name:"Session 1 — Programming and Artificial Intelligence",
+    issuer:"Infosys Springboard", date:"Feb 10, 2026", category:"springboard",
+    file:"assets/certificates/91cfcf59-3121-4256-a6a0-05dea7fd720e.pdf", type:"pdf", emoji:"🧠" },
+
+  { name:"Session 2 — Autonomous Car Physics and Race",
+    issuer:"Infosys Springboard", date:"Feb 11, 2026", category:"springboard",
+    file:"assets/certificates/0d23f0a6-4027-4cfb-8fca-58deffffca71.pdf", type:"pdf", emoji:"🚗" },
+
+  { name:"Session 3 — Computer Vision",
+    issuer:"Infosys Springboard", date:"Feb 15, 2026", category:"springboard",
+    file:"assets/certificates/6bf603cf-d1c0-48ad-ae2c-16d1e60ac868.pdf", type:"pdf", emoji:"👁️" },
+
+  { name:"Session 4 — Object Detection",
+    issuer:"Infosys Springboard", date:"Feb 15, 2026", category:"springboard",
+    file:"assets/certificates/c459a658-c5ee-4768-aff8-29eed4f41b7a.pdf", type:"pdf", emoji:"🔍" },
+
+  { name:"Introduction to Quality Control with AI",
+    issuer:"Infosys Springboard", date:"Feb 15, 2026", category:"springboard",
+    file:"assets/certificates/f8262c94-da0d-4831-9eb9-ff8840fa110b.pdf", type:"pdf", emoji:"✅" },
+
+  // ── INFOSYS SPRINGBOARD — AI INTERNSHIP (internship AI folder) ──
+  { name:"Introduction to Deep Learning",
+    issuer:"Infosys Springboard", date:"Apr 9, 2026", category:"springboard",
+    file:"assets/certificates/internship AI/1aa3d29d-e70b-4efd-969f-ff02d252a017.pdf", type:"pdf", emoji:"🧠" },
+
+  { name:"Generative Models for Developers",
+    issuer:"Infosys Springboard", date:"Apr 9, 2026", category:"springboard",
+    file:"assets/certificates/internship AI/1fb736e6-2d46-4f2a-9100-e735b1bf43f3.pdf", type:"pdf", emoji:"🤖" },
+
+  { name:"Prompt Engineering",
+    issuer:"Infosys Springboard", date:"Apr 10, 2026", category:"springboard",
+    file:"assets/certificates/internship AI/4fb0e3e5-aff6-48e7-b829-f16f4f8a9160.pdf", type:"pdf", emoji:"✍️" },
+
+  { name:"Introduction to Artificial Intelligence",
+    issuer:"Infosys Springboard", date:"Apr 9, 2026", category:"springboard",
+    file:"assets/certificates/internship AI/50837b12-78a2-44d9-b069-2b7d2d9b5d3c.pdf", type:"pdf", emoji:"🤖" },
+
+  { name:"Principles of Generative AI Certification",
+    issuer:"Infosys Springboard", date:"Apr 10, 2026", category:"springboard",
+    file:"assets/certificates/internship AI/71118d56-47c2-4840-b0f6-bd361925d11b.pdf", type:"pdf", emoji:"🎓" },
+
+  { name:"Introduction to OpenAI GPT Models",
+    issuer:"Infosys Springboard", date:"Apr 9, 2026", category:"springboard",
+    file:"assets/certificates/internship AI/9b7e05ef-755b-4130-999c-f77198198df0.pdf", type:"pdf", emoji:"💬" },
+
+  { name:"Artificial Intelligence",
+    issuer:"Infosys Springboard", date:"Apr 10, 2026", category:"springboard",
+    file:"assets/certificates/internship AI/ab90548d-b923-4ad6-b4ed-39553ddc85af.pdf", type:"pdf", emoji:"🤖" },
+
+  { name:"Artificial Intelligence Primer Certification",
+    issuer:"Infosys Springboard", date:"Apr 9, 2026", category:"springboard",
+    file:"assets/certificates/internship AI/b06557b9-e127-4c80-a537-26541b31bbbd.pdf", type:"pdf", emoji:"📖" },
+
+  { name:"Introduction to Natural Language Processing",
+    issuer:"Infosys Springboard", date:"Apr 5, 2026", category:"springboard",
+    file:"assets/certificates/internship AI/bc0069b8-de52-45e8-bb1d-eb264b5b6734.pdf", type:"pdf", emoji:"💬" },
+
+  { name:"Introduction to Data Science",
+    issuer:"Infosys Springboard", date:"Apr 5, 2026", category:"springboard",
+    file:"assets/certificates/internship AI/c9161795-590b-4d90-aac0-33a2056f6909.pdf", type:"pdf", emoji:"📊" },
+
+  { name:"Introduction to Robotic Process Automation",
+    issuer:"Infosys Springboard", date:"Apr 9, 2026", category:"springboard",
+    file:"assets/certificates/internship AI/08306283-f839-4511-9931-036a9863a83e.pdf", type:"pdf", emoji:"🦾" },
+
+  { name:"Deep Learning for Developers",
+    issuer:"Infosys Springboard", date:"Apr 9, 2026", category:"springboard",
+    file:"assets/certificates/internship AI/19276fc7-e6ea-459d-9af1-41ca1f5c140c.pdf", type:"pdf", emoji:"🧬" },
+
+  { name:"Generative AI Unleashing",
+    issuer:"Infosys Springboard", date:"Apr 10, 2026", category:"springboard",
+    file:"assets/certificates/internship AI/e28a6e52-779a-46db-b4e0-7c85e5af14de.pdf", type:"pdf", emoji:"🚀" },
+
+  { name:"OpenAI GPT-3 for Developers",
+    issuer:"Infosys Springboard", date:"Apr 9, 2026", category:"springboard",
+    file:"assets/certificates/internship AI/e396b4fc-d171-465b-9b3b-fb9a99314a1a.pdf", type:"pdf", emoji:"💡" },
+
+  { name:"Computer Vision 101",
+    issuer:"Infosys Springboard", date:"Apr 9, 2026", category:"springboard",
+    file:"assets/certificates/internship AI/f8fe723a-33c4-469d-b21c-13e9e1eacbc3.pdf", type:"pdf", emoji:"👁️" },
+
+  { name:"Agile Scrum in Practice",
+    issuer:"Infosys Springboard", date:"Apr 9, 2026", category:"springboard",
+    file:"assets/certificates/internship AI/fa43a566-9258-45cc-ba41-4ca407d115d3.pdf", type:"pdf", emoji:"🔄" },
+
+  // ── COURSERA ─────────────────────────────────────────────────
+  { name:"Foundations of Cybersecurity",
+    issuer:"Coursera / Google", date:"Mar 5, 2026", category:"coursera",
+    file:"assets/certificates/Coursera 2M5XYC8GE4TY.pdf", type:"pdf", emoji:"🔒",
+    verify:"https://coursera.org/verify/2M5XYC8GE4TY" },
+
+  { name:"Python for Serverless Applications & Automation on AWS",
+    issuer:"Coursera / Amazon Web Services", date:"Mar 8, 2026", category:"coursera",
+    file:"assets/certificates/Coursera 2P3JM8KE1YGI.pdf", type:"pdf", emoji:"🐍",
+    verify:"https://coursera.org/verify/2P3JM8KE1YGI" },
+
+  { name:"Generative AI: Introduction and Applications",
+    issuer:"Coursera / IBM", date:"Mar 6, 2026", category:"coursera",
+    file:"assets/certificates/Coursera 6VVRKOBNHQ84.pdf", type:"pdf", emoji:"🤖",
+    verify:"https://coursera.org/verify/6VVRKOBNHQ84" },
+
+  // ── GOOGLE CLOUD ─────────────────────────────────────────────
+  { name:"Cloud Speech API: 3 Ways Skill Badge",
+    issuer:"Google Cloud", date:"Mar 25, 2026", category:"google",
+    file:"assets/certificates/cloud-speech-api-3-ways-skill-badge.png", type:"image", emoji:"🎙️" },
+
+  { name:"Build a Secure Google Cloud Network Skill Badge",
+    issuer:"Google Cloud", date:"Mar 25, 2026", category:"google",
+    file:"assets/certificates/build-a-secure-google-cloud-network-skill-badge.png", type:"image", emoji:"🔐" },
+
+  { name:"Analyze BigQuery Data in Connected Sheets Skill Badge",
+    issuer:"Google Cloud", date:"Mar 8, 2026", category:"google",
+    file:"assets/certificates/google/analyze-bigquery-data-in-connected-sheets-skill-bad__1_.png", type:"image", emoji:"☁️" },
+
+  { name:"Use Functions, Formulas, and Charts in Google Sheets Skill Badge",
+    issuer:"Google Workspace", date:"Mar 14, 2026", category:"google",
+    file:"assets/certificates/google/use-functions-formulas-and-charts-in-google-sheets-__1_.png", type:"image", emoji:"📊" },
+
+  { name:"Streaming Analytics into BigQuery Skill Badge",
+    issuer:"Google Cloud", date:"Mar 17, 2026", category:"google",
+    file:"assets/certificates/google/streaming-analytics-into-bigquery-skill-badge__1_.png", type:"image", emoji:"📡" },
+
+  { name:"Get Started with Google Workspace Tools Skill Badge",
+    issuer:"Google Workspace", date:"Mar 5, 2026", category:"google",
+    file:"assets/certificates/google/get-started-with-google-workspace-tools-skill-badge__2_.png", type:"image", emoji:"🔧" },
+
+  { name:"App Building with AppSheet Skill Badge",
+    issuer:"Google Cloud", date:"Mar 8, 2026", category:"google",
+    file:"assets/certificates/google/app-building-with-appsheet-skill-badge__1_.png", type:"image", emoji:"📱" },
+
+  { name:"Create and Manage Cloud Spanner Instances Skill Badge",
+    issuer:"Google Cloud", date:"Mar 30, 2026", category:"google",
+    file:"assets/certificates/google/create-and-manage-cloud-spanner-instances-skill-bad.png", type:"image", emoji:"💾" },
+
+  { name:"Analyze Speech and Language with Google APIs Skill Badge",
+    issuer:"Google Cloud", date:"Apr 4, 2026", category:"google",
+    file:"assets/certificates/google/analyze-speech-and-language-with-google-apis-skill-.png", type:"image", emoji:"🎙️" },
+
+  { name:"App Engine: 3 Ways Skill Badge",
+    issuer:"Google Cloud", date:"Apr 4, 2026", category:"google",
+    file:"assets/certificates/google/app-engine-3-ways-skill-badge.png", type:"image", emoji:"🚀" },
+
+  { name:"Implement Cloud Security Fundamentals on Google Cloud Skill Badge",
+    issuer:"Google Cloud", date:"Apr 4, 2026", category:"google",
+    file:"assets/certificates/google/implement-cloud-security-fundamentals-on-google-clo.png", type:"image", emoji:"🛡️" },
+
+  { name:"Implement Load Balancing on Compute Engine Skill Badge",
+    issuer:"Google Cloud", date:"Apr 4, 2026", category:"google",
+    file:"assets/certificates/google/implement-load-balancing-on-compute-engine-skill-ba.png", type:"image", emoji:"⚖️" },
+
+  { name:"Prepare Data for ML APIs on Google Cloud Skill Badge",
+    issuer:"Google Cloud", date:"Apr 4, 2026", category:"google",
+    file:"assets/certificates/google/prepare-data-for-ml-apis-on-google-cloud-skill-badg.png", type:"image", emoji:"🤖" },
+
+  { name:"The Basics of Google Cloud Compute Skill Badge",
+    issuer:"Google Cloud", date:"Apr 4, 2026", category:"google",
+    file:"assets/certificates/google/the-basics-of-google-cloud-compute-skill-badge.png", type:"image", emoji:"🖥️" },
+
+  { name:"Use APIs to Work with Cloud Storage Skill Badge",
+    issuer:"Google Cloud", date:"Apr 4, 2026", category:"google",
+    file:"assets/certificates/google/use-apis-to-work-with-cloud-storage-skill-badge.png", type:"image", emoji:"📦" },
+
+  { name:"Using the Google Cloud Speech API",
+    issuer:"Google Cloud", date:"Apr 4, 2026", category:"google",
+    file:"assets/certificates/google/using-the-google-cloud-speech-api.png", type:"image", emoji:"🗣️" },
+
+  // ── HACKATHONS ────────────────────────────────────────────────
+  { name:"RIT Hackathon 2K25",
+    issuer:"Rajarambapu Institute of Technology", date:"Mar 21–22, 2025", category:"hackathon",
+    file:"assets/certificates/hackathon/rit-hackathon-2k25.png", type:"image", emoji:"⚡" },
+
+  { name:"TENET Hack 25",
+    issuer:"AISSMS Institute of Information Technology, Pune", date:"2025", category:"hackathon",
+    file:"assets/certificates/hackathon/TENET.pdf", type:"pdf", emoji:"⚡" },
+
+  { name:"TechFiesta 2026 — International Hackathon",
+    issuer:"Pune Institute of Computer Technology", date:"2026", category:"hackathon",
+    file:"assets/certificates/hackathon/BlueFlame.pdf", type:"pdf", emoji:"🔥" },
+
+  // ── COMPETITIONS ──────────────────────────────────────────────
+  { name:"Blind Programming — Winner",
+    issuer:"REFLEX 2K25 · Ashokrao Mane Polytechnic", date:"Mar 11, 2025", category:"competition",
+    file:"assets/certificates/competition/reflex-2k25-winner.png", type:"image", emoji:"🏆" },
+
+  { name:"SETCODE — Certificate of Excellence (Top 15)",
+    issuer:"BHASKAR 2026 · Ekasutram x GeeksforGeeks", date:"2026", category:"competition",
+    file:"assets/certificates/setcode-bhaskar-2026.pdf", type:"pdf", emoji:"🥇" },
+
+  // ── EVENTS ────────────────────────────────────────────────────
+  { name:"Online Hunt — VIT x ChaiCode",
+    issuer:"Vishwakarma Institute of Technology, Pune", date:"Jan 2026", category:"event",
+    file:"assets/certificates/event/Online_Hunt.pdf", type:"pdf", emoji:"🎯" },
 
 ];
+
 /* ════════════════════════════════════════════════════════════
    THEME
 ════════════════════════════════════════════════════════════ */
@@ -557,10 +723,12 @@ let visibleCerts = [];
 let lbIndex      = 0;
 
 function ribbonClass(cat){
-  return {'springboard':'springboard','coursera':'coursera','google':'google','hackathon':'hackathon','event':'event','competition':'competition'}[cat]||'event';
+  return {'springboard':'springboard','coursera':'coursera','google':'google',
+          'hackathon':'hackathon','event':'event','competition':'competition'}[cat]||'event';
 }
 function ribbonLabel(cat){
-  return {'springboard':'Springboard','coursera':'Coursera','google':'Google Cloud','hackathon':'Hackathon','event':'Event','competition':'Competition'}[cat]||cat;
+  return {'springboard':'Springboard','coursera':'Coursera','google':'Google Cloud',
+          'hackathon':'Hackathon','event':'Event','competition':'Competition'}[cat]||cat;
 }
 
 function makeTile(cert, globalIdx){
@@ -569,7 +737,6 @@ function makeTile(cert, globalIdx){
   div.dataset.category = cert.category;
   div.dataset.idx = globalIdx;
 
-  // Thumb content
   let thumbInner = '';
   if(cert.type === 'pdf'){
     thumbInner = `<div class="thumb-pdf">
@@ -606,8 +773,8 @@ function render(){
   gallery.innerHTML = '';
   const q = activeSearch.toLowerCase();
 
-  visibleCerts = CERTIFICATES.filter((c,i)=>{
-    const matchCat  = activeFilter==='all' || c.category===activeFilter;
+  visibleCerts = CERTIFICATES.filter(c=>{
+    const matchCat    = activeFilter==='all' || c.category===activeFilter;
     const matchSearch = !q || c.name.toLowerCase().includes(q) || c.issuer.toLowerCase().includes(q);
     return matchCat && matchSearch;
   });
@@ -622,39 +789,37 @@ function render(){
     return;
   }
 
-  // Group by category
   const groups = {};
   visibleCerts.forEach(c=>{ (groups[c.category]=groups[c.category]||[]).push(c); });
 
-  const categoryOrder = ['springboard', 'coursera', 'google', 'hackathon', 'event', 'competition'];
-  const categoryNames = { springboard:'Infosys Springboard', coursera:'Coursera', google:'Google Cloud', hackathon:'Hackathons', event:'Events', competition:'Competitions' };
+  const categoryOrder = ['springboard','coursera','google','hackathon','event','competition'];
+  const categoryNames = {
+    springboard:'Infosys Springboard', coursera:'Coursera',
+    google:'Google Cloud', hackathon:'Hackathons',
+    event:'Events', competition:'Competitions'
+  };
 
   const showGroups = activeFilter === 'all';
 
   if(showGroups){
     categoryOrder.forEach(cat=>{
       if(!groups[cat]) return;
-      // group label
       const lbl = document.createElement('div');
       lbl.className = 'cert-group-label';
       lbl.textContent = categoryNames[cat];
       gallery.appendChild(lbl);
       groups[cat].forEach(cert=>{
-        const globalIdx = CERTIFICATES.indexOf(cert);
-        const tile = makeTile(cert, globalIdx);
-        gallery.appendChild(tile);
+        gallery.appendChild(makeTile(cert, CERTIFICATES.indexOf(cert)));
       });
     });
   } else {
     visibleCerts.forEach(cert=>{
-      const globalIdx = CERTIFICATES.indexOf(cert);
-      gallery.appendChild(makeTile(cert, globalIdx));
+      gallery.appendChild(makeTile(cert, CERTIFICATES.indexOf(cert)));
     });
   }
 
   countLabel.textContent = `Showing ${visibleCerts.length}`;
 
-  // Scroll reveal
   requestAnimationFrame(()=>{
     document.querySelectorAll('.cert-tile.reveal').forEach((el,i)=>{
       el.style.transitionDelay = (i%4)*0.07+'s';
@@ -663,16 +828,14 @@ function render(){
   });
 }
 
-// Update stat counts
 function updateStats(){
-  document.getElementById('totalCount').textContent   = CERTIFICATES.length;
-  document.getElementById('sbCount').textContent      = CERTIFICATES.filter(c=>c.category==='springboard').length;
-  document.getElementById('courseraCount').textContent= CERTIFICATES.filter(c=>c.category==='coursera').length;
-  document.getElementById('googleCount').textContent  = CERTIFICATES.filter(c=>c.category==='google').length;
-  document.getElementById('hackCount').textContent    = CERTIFICATES.filter(c=>c.category==='hackathon').length;
+  document.getElementById('totalCount').textContent    = CERTIFICATES.length;
+  document.getElementById('sbCount').textContent       = CERTIFICATES.filter(c=>c.category==='springboard').length;
+  document.getElementById('courseraCount').textContent = CERTIFICATES.filter(c=>c.category==='coursera').length;
+  document.getElementById('googleCount').textContent   = CERTIFICATES.filter(c=>c.category==='google').length;
+  document.getElementById('hackCount').textContent     = CERTIFICATES.filter(c=>c.category==='hackathon').length;
 }
 
-// Filter tabs
 document.getElementById('filterTabs').addEventListener('click', e=>{
   const btn = e.target.closest('.ftab');
   if(!btn) return;
@@ -682,7 +845,6 @@ document.getElementById('filterTabs').addEventListener('click', e=>{
   render();
 });
 
-// Search
 searchInput.addEventListener('input', e=>{
   activeSearch = e.target.value.trim();
   render();
@@ -695,15 +857,14 @@ const lightbox   = document.getElementById('lightbox');
 const lbBody     = document.getElementById('lbBody');
 const lbIssuer   = document.getElementById('lbIssuer');
 const lbTitle    = document.getElementById('lbTitle');
+const lbVerify   = document.getElementById('lbVerify');
 const lbDownload = document.getElementById('lbDownload');
 const lbCounter  = document.getElementById('lbCounter');
 const lbPrev     = document.getElementById('lbPrev');
 const lbNext     = document.getElementById('lbNext');
 const lbClose    = document.getElementById('lbClose');
 
-// We navigate through visibleCerts in lightbox
 function openLightbox(globalIdx){
-  // find position in visibleCerts
   const pos = visibleCerts.findIndex(c=>CERTIFICATES.indexOf(c)===globalIdx);
   lbIndex = pos >= 0 ? pos : 0;
   showLb();
@@ -714,19 +875,26 @@ function openLightbox(globalIdx){
 function showLb(){
   const cert = visibleCerts[lbIndex];
   if(!cert) return;
-  lbIssuer.textContent = cert.issuer;
-  lbTitle.textContent  = cert.name;
-  lbDownload.href      = cert.file;
+  lbIssuer.textContent  = cert.issuer;
+  lbTitle.textContent   = cert.name;
+  lbDownload.href       = cert.file;
   lbDownload.setAttribute('download','');
-  lbCounter.textContent= `${lbIndex+1} / ${visibleCerts.length}`;
-  lbPrev.disabled      = lbIndex===0;
-  lbNext.disabled      = lbIndex===visibleCerts.length-1;
+  lbCounter.textContent = `${lbIndex+1} / ${visibleCerts.length}`;
+  lbPrev.disabled       = lbIndex === 0;
+  lbNext.disabled       = lbIndex === visibleCerts.length - 1;
 
-  if(cert.type==='pdf'){
-    lbBody.innerHTML=`<iframe class="lb-pdf" src="${cert.file}" title="${cert.name}"></iframe>`;
+  if(cert.verify){
+    lbVerify.href = cert.verify;
+    lbVerify.style.display = 'flex';
   } else {
-    lbBody.innerHTML=`<img src="${cert.file}" alt="${cert.name}"
-      onerror="this.outerHTML='<div style=\\'text-align:center;padding:40px;color:var(--text2)\\'><div style=\\'font-size:4rem;margin-bottom:16px\\'>${cert.emoji}</div><p style=\\'font-size:1rem\\'>Image file not found.<br/>Add it to <code>assets/certificates/</code></p></div>'" />`;
+    lbVerify.style.display = 'none';
+  }
+
+  if(cert.type === 'pdf'){
+    lbBody.innerHTML = `<iframe class="lb-pdf" src="${cert.file}" title="${cert.name}"></iframe>`;
+  } else {
+    lbBody.innerHTML = `<img src="${cert.file}" alt="${cert.name}"
+      onerror="this.outerHTML='<div style=\\'text-align:center;padding:40px;color:var(--text2)\\'><div style=\\'font-size:4rem;margin-bottom:16px\\'>${cert.emoji}</div><p>Image file not found.<br/>Add it to <code>assets/certificates/</code></p></div>'" />`;
   }
 }
 
@@ -736,25 +904,25 @@ function closeLb(){
   setTimeout(()=>lbBody.innerHTML='',300);
 }
 
-lbClose.addEventListener('click',closeLb);
-lightbox.addEventListener('click',e=>{ if(e.target===lightbox) closeLb(); });
-lbPrev.addEventListener('click',()=>{ if(lbIndex>0){ lbIndex--; showLb(); } });
-lbNext.addEventListener('click',()=>{ if(lbIndex<visibleCerts.length-1){ lbIndex++; showLb(); } });
+lbClose.addEventListener('click', closeLb);
+lightbox.addEventListener('click', e=>{ if(e.target===lightbox) closeLb(); });
+lbPrev.addEventListener('click', ()=>{ if(lbIndex>0){ lbIndex--; showLb(); } });
+lbNext.addEventListener('click', ()=>{ if(lbIndex<visibleCerts.length-1){ lbIndex++; showLb(); } });
 
-document.addEventListener('keydown',e=>{
+document.addEventListener('keydown', e=>{
   if(!lightbox.classList.contains('open')) return;
-  if(e.key==='Escape') closeLb();
-  if(e.key==='ArrowLeft'  && lbIndex>0)                      { lbIndex--; showLb(); }
-  if(e.key==='ArrowRight' && lbIndex<visibleCerts.length-1)  { lbIndex++; showLb(); }
+  if(e.key==='Escape')      closeLb();
+  if(e.key==='ArrowLeft'  && lbIndex>0)                     { lbIndex--; showLb(); }
+  if(e.key==='ArrowRight' && lbIndex<visibleCerts.length-1) { lbIndex++; showLb(); }
 });
 
 /* ════════════════════════════════════════════════════════════
-   INIT — read ?filter= from URL and auto-apply
+   INIT
 ════════════════════════════════════════════════════════════ */
 updateStats();
 
 const urlFilter = new URLSearchParams(window.location.search).get('filter');
-if(urlFilter && ['course','hackathon','event','competition'].includes(urlFilter)){
+if(urlFilter && ['springboard','coursera','google','hackathon','event','competition'].includes(urlFilter)){
   activeFilter = urlFilter;
   document.querySelectorAll('.ftab').forEach(t=>{
     t.classList.toggle('active', t.dataset.filter === urlFilter);
